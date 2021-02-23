@@ -29,22 +29,26 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>Starlight Responsive Bootstrap 4 Admin Template</title>
+    <title>Dashboard</title>
 
     <!-- vendor css -->
     <link href="{{ asset('board/lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('board/lib/Ionicons/css/ionicons.css') }}" rel="stylesheet">
     <link href="{{ asset('board/lib/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
     <link href="{{ asset('board/lib/rickshaw/rickshaw.min.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('board/lib/highlightjs/github.css') }}" rel="stylesheet">
+    <link href="{{ asset('board/lib/datatables/jquery.dataTables.css') }}" rel="stylesheet">
+    <link href="{{ asset('board/lib/select2/css/select2.min.css') }}" rel="stylesheet">
     <!-- Starlight CSS -->
     <link rel="stylesheet" href="{{ asset('board/css/starlight.css') }}">
+            <!-- toastr -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
   </head>
 
   <body>
 
     <!-- ########## START: LEFT PANEL ########## -->
-    <div class="sl-logo"><a href=""><i class="icon ion-android-star-outline"></i> starlight</a></div>
+    <div class="sl-logo"><a href="{{ route('admin.dashboard') }}"><i class="icon ion-android-star-outline"></i> starlight</a></div>
     <div class="sl-sideleft">
       <div class="input-group input-group-search">
         <input type="search" name="search" class="form-control" placeholder="Search">
@@ -55,18 +59,36 @@
 
       <label class="sidebar-label">Navigation</label>
       <div class="sl-sideleft-menu">
-        <a href="index.html" class="sl-menu-link active">
+        <a href="{{ route('admin.dashboard') }}" class="sl-menu-link active">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
             <span class="menu-item-label">Dashboard</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <a href="widgets.html" class="sl-menu-link">
+        <a href="{{ route('frontpage') }}" class="sl-menu-link">
+            <div class="sl-menu-item">
+              <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
+              <span class="menu-item-label">Home</span>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
+        <a href="{{ route('admin.categories') }}" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-            <span class="menu-item-label">Cards &amp; Widgets</span>
+            <span class="menu-item-label">Categories</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
+        <a href="widgets.html" class="sl-menu-link">
+            <div class="sl-menu-item">
+              <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+              <span class="menu-item-label">Sub Categories</span>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
+          <a href="widgets.html" class="sl-menu-link">
+            <div class="sl-menu-item">
+              <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+              <span class="menu-item-label">Brands</span>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
@@ -179,7 +201,7 @@
             <div class="dropdown-menu dropdown-menu-header wd-200">
               <ul class="list-unstyled user-profile-nav">
                 <li><a href=""><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
-                <li><a href=""><i class="icon ion-ios-gear-outline"></i> Settings</a></li>
+                <li><a href="{{ route('admin.password.page') }}"><i class="icon ion-ios-gear-outline"></i> Change Password</a></li>
                 <li><a href=""><i class="icon ion-ios-download-outline"></i> Downloads</a></li>
                 <li><a href=""><i class="icon ion-ios-star-outline"></i> Favorites</a></li>
                 <li><a href=""><i class="icon ion-ios-folder-outline"></i> Collections</a></li>
@@ -373,10 +395,83 @@
     <script src="{{ asset('board/lib/Flot/jquery.flot.pie.js') }}"></script>
     <script src="{{ asset('board/lib/Flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('board/lib/flot-spline/jquery.flot.spline.js') }}"></script>
-
+    <script src="{{ asset('board/lib/highlightjs/highlight.pack.js') }}"></script>
+    <script src="{{ asset('board/lib/datatables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('board/lib/datatables-responsive/dataTables.responsive.js') }}"></script>
+    <script src="{{ asset('board/lib/select2/js/select2.min.js') }}"></script>
     <script src="{{ asset('board/js/starlight.js') }}"></script>
     <script src="{{ asset('board/js/ResizeSensor.js') }}"></script>
     <script src="{{ asset('board/js/dashboard.js') }}"></script>
+         <!-- toastr -->
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+         <!-- sweet alert -->
+         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+         <script>
+            @if(Session::has('message'))
+            var type = "{{ Session::get('alert-type') }}"
+            switch (type) {
+                case 'info':
+                    toastr.info("{{ Session::get('message') }}")
+                    break;
+                    case 'success':
+                    toastr.success("{{ Session::get('message') }}")
+                    break;
+                    case 'error':
+                    toastr.error("{{ Session::get('message') }}")
+                    break;
+                    case 'warning':
+                    toastr.info("{{ Session::get('message') }}")
+                    break;
+                default:
+                    break;
+            }
+            @endif
+        </script>
+          <script>
+            $(function(){
+              'use strict';
 
+              $('#datatable1').DataTable({
+                responsive: true,
+                language: {
+                  searchPlaceholder: 'Search...',
+                  sSearch: '',
+                  lengthMenu: '_MENU_ items/page',
+                }
+              });
+
+              $('#datatable2').DataTable({
+                bLengthChange: false,
+                searching: false,
+                responsive: true
+              });
+
+              // Select2
+              $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+
+            });
+          </script>
+
+          <script>
+              $(document).on("click", "#delete",function(e){
+                e.preventDefault();
+                var link = $(this).attr("href");
+                swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this category!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                   })
+               .then((willDelete) => {
+                if (willDelete) {
+                      window.location.href = link;
+            } else {
+            swal("Safe Data");
+                  }
+            });
+              });
+
+          </script>
   </body>
 </html>

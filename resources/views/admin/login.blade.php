@@ -38,6 +38,8 @@
 
     <!-- Starlight CSS -->
     <link rel="stylesheet" href="{{ asset('board/css/starlight.css') }}">
+            <!-- toastr -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
   </head>
 
   <body>
@@ -77,6 +79,28 @@
     <script src="{{ asset('board/lib/jquery/jquery.js') }}"></script>
     <script src="{{ asset('board/lib/popper.js/popper.js') }}"></script>
     <script src="{{ asset('board/lib/bootstrap/bootstrap.js') }}"></script>
-
+         <!-- toastr -->
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+         <script>
+            @if(Session::has('message'))
+            var type = "{{ Session::get('alert-type') }}"
+            switch (type) {
+                case 'info':
+                    toastr.info("{{ Session::get('message') }}")
+                    break;
+                    case 'success':
+                    toastr.success("{{ Session::get('message') }}")
+                    break;
+                    case 'error':
+                    toastr.error("{{ Session::get('message') }}")
+                    break;
+                    case 'warning':
+                    toastr.info("{{ Session::get('message') }}")
+                    break;
+                default:
+                    break;
+            }
+            @endif
+        </script>
   </body>
 </html>
