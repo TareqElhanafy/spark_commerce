@@ -483,7 +483,12 @@
               $('.prevent-multiple-submits').on('submit', function(){
                   $('.button-prevent-multiple-submits').attr('disabled','true')
                   $('.spinner').show();
-              })
+              });
+          </script>
+          <script>
+          $(".modal").on("hidden.bs.modal", function(){
+              $(".modal-body input").val("");
+              });
           </script>
   </body>
 </html>

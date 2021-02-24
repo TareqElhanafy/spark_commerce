@@ -15,7 +15,7 @@
 
         <div class="card pd-20 pd-sm-40">
           <h6 class="card-body-title">Categories List
-            <a href="" class="btn btn-sm btn-success" style="float: right;" data-toggle="modal" data-target="#modaldemo3">Add New</a>
+            <a href="" class="btn btn-sm btn-success" style="float: right;" id="clear" data-toggle="modal" data-target="#modaldemo3">Add New</a>
           </h6>
           <div class="table-wrapper">
             <table id="datatable1" class="table display responsive nowrap">
@@ -46,7 +46,7 @@
 
       <!-- model for Adding new category -->
         <!-- LARGE MODAL -->
-        <form action="{{ route('admin.categories.store') }}" class="prevent-multiple-submits" method="POST">
+        <form action="{{ route('admin.categories.store') }}" class="prevent-multiple-submits form" method="POST">
             @csrf
          <div id="modaldemo3" class="modal fade">
             <div class="modal-dialog modal-lg" role="document">
@@ -59,7 +59,7 @@
                 </div>
                 <div class="modal-body pd-20">
                     <label for="name">Category Name</label>
-                  <input type="text" name="name" id=" ">
+                  <input type="text" class="name-without-data" name="name" id=" ">
                   @error('name')
                   <div class="alert alert-danger" role="alert">
                     {{$message}}
@@ -70,7 +70,7 @@
                   <button type="submit" class="btn btn-info pd-x-20 button-prevent-multiple-submits">
                       <i class="spinner fa fa-spinner fa-spin"></i>
                     Save</button>
-                  <button type="button" class="btn btn-secondary pd-x-20" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-secondary pd-x-20" id="close" data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div><!-- modal-dialog -->
