@@ -4,8 +4,8 @@
     <div class="sl-mainpanel">
       <nav class="breadcrumb sl-breadcrumb">
         <a class="breadcrumb-item" href="index.html">Starlight</a>
-        <a class="breadcrumb-item" href="index.html">Tables</a>
-        <span class="breadcrumb-item active">Data Table</span>
+        <a class="breadcrumb-item" href="index.html">Categories</a>
+        <span class="breadcrumb-item active">List</span>
       </nav>
 
       <div class="sl-pagebody">
@@ -42,8 +42,11 @@
             </table>
           </div><!-- table-wrapper -->
         </div><!-- card -->
+
+
+      <!-- model for Adding new category -->
         <!-- LARGE MODAL -->
-        <form action="{{ route('admin.categories.store') }}" method="POST">
+        <form action="{{ route('admin.categories.store') }}" class="prevent-multiple-submits" method="POST">
             @csrf
          <div id="modaldemo3" class="modal fade">
             <div class="modal-dialog modal-lg" role="document">
@@ -64,7 +67,9 @@
                   @enderror
                 </div><!-- modal-body -->
                 <div class="modal-footer">
-                  <button type="submit" class="btn btn-info pd-x-20">Save</button>
+                  <button type="submit" class="btn btn-info pd-x-20 button-prevent-multiple-submits">
+                      <i class="spinner fa fa-spinner fa-spin"></i>
+                    Save</button>
                   <button type="button" class="btn btn-secondary pd-x-20" data-dismiss="modal">Close</button>
                 </div>
               </div>

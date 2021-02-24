@@ -77,13 +77,13 @@
             <span class="menu-item-label">Categories</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <a href="widgets.html" class="sl-menu-link">
+        <a href="{{ route('admin.subcategories') }}" class="sl-menu-link">
             <div class="sl-menu-item">
               <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
               <span class="menu-item-label">Sub Categories</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
-          <a href="widgets.html" class="sl-menu-link">
+          <a href="{{ route('admin.brands') }}" class="sl-menu-link">
             <div class="sl-menu-item">
               <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
               <span class="menu-item-label">Brands</span>
@@ -402,10 +402,12 @@
     <script src="{{ asset('board/js/starlight.js') }}"></script>
     <script src="{{ asset('board/js/ResizeSensor.js') }}"></script>
     <script src="{{ asset('board/js/dashboard.js') }}"></script>
-         <!-- toastr -->
-         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-         <!-- sweet alert -->
-         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <!-- toastr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+   <!-- sweet alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+      <!--  toaster -->
          <script>
             @if(Session::has('message'))
             var type = "{{ Session::get('alert-type') }}"
@@ -427,6 +429,8 @@
             }
             @endif
         </script>
+
+
           <script>
             $(function(){
               'use strict';
@@ -452,13 +456,14 @@
             });
           </script>
 
+        <!-- sweet alert -->
           <script>
               $(document).on("click", "#delete",function(e){
                 e.preventDefault();
                 var link = $(this).attr("href");
                 swal({
                 title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover this category!",
+                text: "Once deleted, you will not be able to recover this!",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -472,6 +477,13 @@
             });
               });
 
+          </script>
+
+          <script>
+              $('.prevent-multiple-submits').on('submit', function(){
+                  $('.button-prevent-multiple-submits').attr('disabled','true')
+                  $('.spinner').show();
+              })
           </script>
   </body>
 </html>
