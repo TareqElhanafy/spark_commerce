@@ -4,37 +4,36 @@
     <div class="sl-mainpanel">
       <nav class="breadcrumb sl-breadcrumb">
         <a class="breadcrumb-item" href="index.html">Starlight</a>
-        <a class="breadcrumb-item" href="index.html">Categories</a>
+        <a class="breadcrumb-item" href="index.html">Subscribers</a>
         <span class="breadcrumb-item active">List</span>
       </nav>
 
       <div class="sl-pagebody">
         <div class="sl-page-title">
-          <h5>Categories Table</h5>
+          <h5>Subscribers Table</h5>
         </div><!-- sl-page-title -->
 
         <div class="card pd-20 pd-sm-40">
-          <h6 class="card-body-title">Categories List
-            <a href="" class="btn btn-sm btn-success" style="float: right;" id="clear" data-toggle="modal" data-target="#modaldemo3">Add New</a>
+          <h6 class="card-body-title">Subscribers List
+            <a href="" class="btn btn-sm btn-success" style="float: right;" id="clear" data-toggle="modal" data-target="#modaldemo3">Delete All</a>
           </h6>
           <div class="table-wrapper">
             <table id="datatable1" class="table display responsive nowrap">
               <thead>
                 <tr>
-                  <th class="wd-15p">Category Id</th>
-                  <th class="wd-15p">Category name</th>
+                  <th class="wd-5p">Subscriber Id</th>
+                  <th class="wd-15p">Subscriber Email</th>
                   <th class="wd-20p">Actions</th>
                 </tr>
               </thead>
               <tbody>
 
-                  @foreach ($categories as $category)
+                  @foreach ($Subscribers as $Subscriber)
                 <tr>
-                  <td>{{ $category->id }}</td>
-                  <td>{{ $category->name }}</td>
+                  <td> <input type="checkbox">   {{  $Subscriber->id  }}</td>
+                  <td>{{ $Subscriber->email }}</td>
                   <td>
-                      <a class="btn btn-sm btn-warning" href="{{ route('admin.categories.edit', $category->id) }}">Edit</a>
-                      <a class="btn btn-sm btn-danger" id="delete" href="{{route('admin.categories.delete', $category->id) }}">Delete</a>
+                      <a class="btn btn-sm btn-danger" id="delete" href="{{route('admin.newsletters.delete', $Subscriber->id) }}">Delete</a>
                   </td>
                 </tr>
                 @endforeach
@@ -46,7 +45,7 @@
 
       <!-- model for Adding new category -->
         <!-- LARGE MODAL -->
-        <form action="{{ route('admin.categories.store') }}" class="prevent-multiple-submits form" method="POST">
+        {{-- <form action="{{ route('admin.coupons.store') }}" class="prevent-multiple-submits form" method="POST">
             @csrf
          <div id="modaldemo3" class="modal fade">
             <div class="modal-dialog modal-lg" role="document">
@@ -58,9 +57,16 @@
                   </button>
                 </div>
                 <div class="modal-body pd-20">
-                    <label for="name">Category Name</label>
-                  <input type="text" class="form-control" name="name" id=" ">
-                  @error('name')
+                    <label for="name">Coupon Code</label>
+                  <input type="text" class="form-control" name="code" id="">
+                  @error('code')
+                  <div class="alert alert-danger" role="alert">
+                    {{$message}}
+                     </div>
+                  @enderror
+                  <label for="discount">Coupon Discount</label>
+                  <input type="number" class="form-control" name="discount" id="">
+                  @error('discount')
                   <div class="alert alert-danger" role="alert">
                     {{$message}}
                      </div>
@@ -75,5 +81,6 @@
               </div>
             </div><!-- modal-dialog -->
           </div><!-- modal -->
-        </form>
+        </form> --}}
 @endsection
+

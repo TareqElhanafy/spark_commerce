@@ -22,4 +22,9 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/user/logout', 'HomeController@logout')->name('user.logout');
+
+    /**
+     * Newsletters Routes
+     */
+    Route::post('/add-new','Admin\NewsletterController@store')->name('add.newsletter');
 });

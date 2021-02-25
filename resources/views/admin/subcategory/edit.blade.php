@@ -22,7 +22,7 @@
                 <div class="modal-body pd-20">
                     <div class="form-group">
                     <label for="name">Sub-Category Name</label>
-                  <input type="text" name="name" id=" " value="{{ $subCategory->name }}">
+                  <input type="text" class="form-control" name="name" id=" " value="{{ $subCategory->name }}">
                   @error('name')
                   <div class="alert alert-danger" role="alert">
                     {{$message}}

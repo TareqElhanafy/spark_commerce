@@ -4,37 +4,39 @@
     <div class="sl-mainpanel">
       <nav class="breadcrumb sl-breadcrumb">
         <a class="breadcrumb-item" href="index.html">Starlight</a>
-        <a class="breadcrumb-item" href="index.html">Categories</a>
+        <a class="breadcrumb-item" href="index.html">Coupons</a>
         <span class="breadcrumb-item active">List</span>
       </nav>
 
       <div class="sl-pagebody">
         <div class="sl-page-title">
-          <h5>Categories Table</h5>
+          <h5>Coupons Table</h5>
         </div><!-- sl-page-title -->
 
         <div class="card pd-20 pd-sm-40">
-          <h6 class="card-body-title">Categories List
+          <h6 class="card-body-title">Coupons List
             <a href="" class="btn btn-sm btn-success" style="float: right;" id="clear" data-toggle="modal" data-target="#modaldemo3">Add New</a>
           </h6>
           <div class="table-wrapper">
             <table id="datatable1" class="table display responsive nowrap">
               <thead>
                 <tr>
-                  <th class="wd-15p">Category Id</th>
-                  <th class="wd-15p">Category name</th>
+                  <th class="wd-15p">Coupon Id</th>
+                  <th class="wd-15p">Coupon Code</th>
+                  <th class="wd-15p">Coupon Discount</th>
                   <th class="wd-20p">Actions</th>
                 </tr>
               </thead>
               <tbody>
 
-                  @foreach ($categories as $category)
+                  @foreach ($Coupons as $Coupon)
                 <tr>
-                  <td>{{ $category->id }}</td>
-                  <td>{{ $category->name }}</td>
+                  <td>{{ $Coupon->id }}</td>
+                  <td>{{ $Coupon->code }}</td>
+                  <td>{{ $Coupon->discount }}%</td>
                   <td>
-                      <a class="btn btn-sm btn-warning" href="{{ route('admin.categories.edit', $category->id) }}">Edit</a>
-                      <a class="btn btn-sm btn-danger" id="delete" href="{{route('admin.categories.delete', $category->id) }}">Delete</a>
+                      <a class="btn btn-sm btn-warning" href="{{ route('admin.coupons.edit', $Coupon->id) }}">Edit</a>
+                      <a class="btn btn-sm btn-danger" id="delete" href="{{route('admin.coupons.delete', $Coupon->id) }}">Delete</a>
                   </td>
                 </tr>
                 @endforeach
@@ -46,7 +48,7 @@
 
       <!-- model for Adding new category -->
         <!-- LARGE MODAL -->
-        <form action="{{ route('admin.categories.store') }}" class="prevent-multiple-submits form" method="POST">
+        <form action="{{ route('admin.coupons.store') }}" class="prevent-multiple-submits form" method="POST">
             @csrf
          <div id="modaldemo3" class="modal fade">
             <div class="modal-dialog modal-lg" role="document">
@@ -58,9 +60,16 @@
                   </button>
                 </div>
                 <div class="modal-body pd-20">
-                    <label for="name">Category Name</label>
-                  <input type="text" class="form-control" name="name" id=" ">
-                  @error('name')
+                    <label for="name">Coupon Code</label>
+                  <input type="text" class="form-control" name="code" id="">
+                  @error('code')
+                  <div class="alert alert-danger" role="alert">
+                    {{$message}}
+                     </div>
+                  @enderror
+                  <label for="discount">Coupon Discount</label>
+                  <input type="number" class="form-control" name="discount" id="">
+                  @error('discount')
                   <div class="alert alert-danger" role="alert">
                     {{$message}}
                      </div>
@@ -77,3 +86,4 @@
           </div><!-- modal -->
         </form>
 @endsection
+

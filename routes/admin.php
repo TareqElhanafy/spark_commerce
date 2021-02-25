@@ -48,6 +48,27 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function ()
         Route::post('/update/{id}', 'BrandController@update')->name('admin.brands.update');
         Route::get('/delete/{id}','BrandController@destroy')->name('admin.brands.delete');
     });
+
+    /**
+     *
+     * Coupons Routes
+     */
+    Route::group(['prefix'=>'coupons'], function(){
+     Route::get('/','CouponsController@index')->name('admin.coupons');
+     Route::post('/add-coupon', 'CouponsController@store')->name('admin.coupons.store');
+     Route::get('/delete/{id}', 'CouponsController@destroy')->name('admin.coupons.delete');
+     Route::get('/edit/{id}', 'CouponsController@edit')->name('admin.coupons.edit');
+     Route::post('/update/{id}', 'CouponsController@update')->name('admin.coupons.update');
+     Route::get('/delete/{id}', 'CouponsController@destroy')->name('admin.coupons.delete');
+    });
+
+         /**
+      * Newsletters Routes
+      */
+      Route::group(['prefix'=>'newsletters'], function(){
+        Route::get('/', 'NewsletterController@index')->name('admin.newsletters');
+        Route::get('delete/{id}','NewsletterController@destroy')->name('admin.newsletters.delete');
+    });
 });
 
 Route::group(['namespace' => 'Admin', 'middleware' => 'guest:admin'], function () {

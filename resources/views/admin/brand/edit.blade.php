@@ -23,7 +23,7 @@
                 <div class="modal-body pd-20">
                     <div class="form-group">
                     <label for="name">Brand Name</label>
-                  <input type="text" name="name" id=" " value="{{ $brand->name }}">
+                  <input type="text" class="form-control" name="name" id=" " value="{{ $brand->name }}">
                   @error('name')
                   <div class="alert alert-danger" role="alert">
                     {{$message}}
@@ -33,7 +33,7 @@
                   <div class="form-group">
                     <label for="category_id">Brand Logo</label>
                     <div class="form-group">
-                        <img src="{{ asset('storage/'.$brand->logo) }}" style="height: 100px;  width:100px;" alt="">
+                        <img src="{{ asset('storage/'.$brand->logo) }}" class="form-control" style="height: 100px;  width:100px;" alt="">
                     </div>
                    <input type="file" name="logo" id="" value="{{ $brand->logo }}" class="form-control">
                     @error('logo')
