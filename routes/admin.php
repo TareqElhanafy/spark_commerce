@@ -34,6 +34,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function ()
      Route::get('/edit/{id}','SubCategoryController@edit')->name('admin.subcategories.edit');
      Route::post('/update/{id}','SubCategoryController@update')->name('admin.subcategories.update');
      Route::get('/delete/{id}','SubCategoryController@destroy')->name('admin.subcategories.delete');
+     Route::get('/get/subcategory/{category_id}', 'SubCategoryController@getsub')->name('admin.getsubcategories');
 
     });
 
@@ -62,13 +63,28 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function ()
      Route::get('/delete/{id}', 'CouponsController@destroy')->name('admin.coupons.delete');
     });
 
-         /**
+     /**
       * Newsletters Routes
       */
       Route::group(['prefix'=>'newsletters'], function(){
         Route::get('/', 'NewsletterController@index')->name('admin.newsletters');
         Route::get('delete/{id}','NewsletterController@destroy')->name('admin.newsletters.delete');
     });
+
+    /**
+     *
+     * Products Routes
+     */
+    Route::group(['prefix'=>'products'], function(){
+        Route::get('/', 'ProductController@index')->name('admin.products');
+        Route::get('/create', 'ProductController@create')->name('admin.products.create');
+        Route::post('/store','ProductController@store')->name('admin.products.store');
+        Route::get('/delete/{id}', 'ProductController@destroy')->name('admin.products.delete');
+        Route::get('/change-status/{id}', 'ProductController@changeStatus')->name('admin.products.status');
+        Route::get('/edit/{id}','ProductController@edit')->name('admin.products.edit');
+        Route::post('/update-product/{id}', 'ProductController@update')->name('admin.product.update');
+    });
+
 });
 
 Route::group(['namespace' => 'Admin', 'middleware' => 'guest:admin'], function () {

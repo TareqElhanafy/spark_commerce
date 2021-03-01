@@ -22,19 +22,19 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->integer('quantity');
             $table->integer('price');
-            $table->integer('status');
+            $table->integer('status')->default(0);
             $table->string('image_one');
-            $table->string('inage_two');
-            $table->string('image_three');
+            $table->string('image_two')->nullable();
+            $table->string('image_three')->nullable();
             $table->string('color')->nullable();
             $table->string('size')->nullable();
             $table->integer('discount')->nullable();
             $table->string('video_link')->nullable();
-            $table->integer('main_slider')->nullable();
-            $table->integer('hot_deal')->nullable();
-            $table->integer('mid_slider')->nullable();
-            $table->integer('best_rated')->nullable();
-            $table->integer('trend')->nullable();
+            $table->integer('main_slider')->nullable()->default(0);
+            $table->integer('hot_deal')->nullable()->default(0);
+            $table->integer('mid_slider')->nullable()->default(0);
+            $table->integer('best_rated')->nullable()->default(0);
+            $table->integer('trend')->nullable()->default(0);
             $table->timestamps();
         });
     }

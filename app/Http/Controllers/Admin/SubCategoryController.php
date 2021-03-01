@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AddSubcategoryRequest;
 use App\SubCategory;
 use Illuminate\Http\Request;
+use Mockery\Matcher\Subset;
 
 class SubCategoryController extends Controller
 {
@@ -87,5 +88,11 @@ class SubCategoryController extends Controller
             'message' => 'Sub-Category deleted successfully',
             'alert-type' => 'success',
         ]);
+    }
+
+    public function getsub($category_id)
+    {
+        $subcategories = SubCategory::where('category_id',$category_id)->get();
+        return json_decode($subcategories);
     }
 }

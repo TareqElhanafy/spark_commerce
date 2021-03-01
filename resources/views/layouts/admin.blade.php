@@ -39,6 +39,9 @@
     <link href="{{ asset('board/lib/highlightjs/github.css') }}" rel="stylesheet">
     <link href="{{ asset('board/lib/datatables/jquery.dataTables.css') }}" rel="stylesheet">
     <link href="{{ asset('board/lib/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('board/lib/medium-editor/medium-editor.css') }}" rel="stylesheet">
+    <link href="{{ asset('board/lib/medium-editor/default.css') }}" rel="stylesheet">
+    <link href="{{ asset('board/lib/summernote/summernote-bs4.css') }}" rel="stylesheet">
     <!-- Starlight CSS -->
     <link rel="stylesheet" href="{{ asset('board/css/starlight.css') }}">
             <!-- toastr -->
@@ -103,8 +106,8 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="chart-morris.html" class="nav-link">Add Product</a></li>
-          <li class="nav-item"><a href="chart-flot.html" class="nav-link">All Products</a></li>
+          <li class="nav-item"><a href="{{ route('admin.products.create') }}" class="nav-link">Add Product</a></li>
+          <li class="nav-item"><a href="{{ route('admin.products') }}" class="nav-link">All Products</a></li>
         </ul>
         <a href="{{ route('admin.newsletters') }}" class="sl-menu-link">
             <div class="sl-menu-item">
@@ -332,6 +335,25 @@
     <script src="{{ asset('board/lib/datatables/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('board/lib/datatables-responsive/dataTables.responsive.js') }}"></script>
     <script src="{{ asset('board/lib/select2/js/select2.min.js') }}"></script>
+    <!-- text editor -->
+    <script src="{{ asset('board/lib/medium-editor/medium-editor.js') }}"></script>
+    <script src="{{ asset('board/lib/summernote/summernote-bs4.min.js') }}"></script>
+    <script>
+        $(function(){
+            'use strict';
+
+            // Inline editor
+            var editor = new MediumEditor('.editable');
+
+         // Summernote editor
+            $('#summernote').summernote({
+              height: 150,
+              tooltip: false
+            })
+          });
+     </script>
+    <!-- -->
+
     <script src="{{ asset('board/js/starlight.js') }}"></script>
     <script src="{{ asset('board/js/ResizeSensor.js') }}"></script>
     <script src="{{ asset('board/js/dashboard.js') }}"></script>
@@ -411,17 +433,19 @@
               });
 
           </script>
-
+<!--preventing two double submit -->
           <script>
               $('.prevent-multiple-submits').on('submit', function(){
                   $('.button-prevent-multiple-submits').attr('disabled','true')
                   $('.spinner').show();
               });
           </script>
+<!--clearing the modal from cached data -->
           <script>
           $(".modal").on("hidden.bs.modal", function(){
               $(".modal-body input").val("");
               });
           </script>
+
   </body>
 </html>

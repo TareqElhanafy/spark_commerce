@@ -9,7 +9,7 @@ class Product extends Model
     protected $fillable = [
         'trend', 'best_rated',  'mid_slider',  'hot_deal', 'main_slider',
         'video_link', 'discount', 'size', 'color',
-        'image_three', 'inage_two', 'inage_one', 'status', 'price', 'quantity',
+        'image_three', 'image_two', 'image_one', 'status', 'price', 'quantity',
         'description', 'name', 'brand_id', 'subcategory_id', 'category_id'
 
     ];
@@ -27,5 +27,10 @@ class Product extends Model
     public function brand()
     {
         return $this->belongsTo(Brand::class, 'brand_id');
+    }
+
+    public function getStatus()
+    {
+        return $this->status == 1 ? "Active":"InActive";
     }
 }
