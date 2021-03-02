@@ -85,7 +85,7 @@
               <div class="col-lg-4">
                 <div class="form-group mg-b-10-force">
                   <label class="form-control-label">Brands:</label>
-                  <select class="form-control select2" data-placeholder="Choose brand">
+                  <select class="form-control select2" name="brand_id" data-placeholder="Choose brand">
                       <option label="Choose brand">Choose brand</option>
                       @foreach ($brands as $brand)
                       <option value="{{ $brand->id }}" @isset($product->brand)
@@ -94,7 +94,7 @@
                         selected
                     @endif
                     @endisset>
-                    {{ $category->name }}</option>
+                    {{ $brand->name }}</option>
                     @endforeach
                   </select>
                   @error('brand_id')
