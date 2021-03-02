@@ -28,63 +28,91 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function ()
      *
      * Sub-categories Routes
      */
-    Route::group(['prefix'=>'sub-categories'], function(){
-     Route::get('/','SubCategoryController@index')->name('admin.subcategories');
-     Route::post('/add-sub-category','SubCategoryController@store')->name('admin.subcategories.store');
-     Route::get('/edit/{id}','SubCategoryController@edit')->name('admin.subcategories.edit');
-     Route::post('/update/{id}','SubCategoryController@update')->name('admin.subcategories.update');
-     Route::get('/delete/{id}','SubCategoryController@destroy')->name('admin.subcategories.delete');
-     Route::get('/get/subcategory/{category_id}', 'SubCategoryController@getsub')->name('admin.getsubcategories');
-
+    Route::group(['prefix' => 'sub-categories'], function () {
+        Route::get('/', 'SubCategoryController@index')->name('admin.subcategories');
+        Route::post('/add-sub-category', 'SubCategoryController@store')->name('admin.subcategories.store');
+        Route::get('/edit/{id}', 'SubCategoryController@edit')->name('admin.subcategories.edit');
+        Route::post('/update/{id}', 'SubCategoryController@update')->name('admin.subcategories.update');
+        Route::get('/delete/{id}', 'SubCategoryController@destroy')->name('admin.subcategories.delete');
+        Route::get('/get/subcategory/{category_id}', 'SubCategoryController@getsub')->name('admin.getsubcategories');
     });
 
     /**
      *
      * Brands Routes
      */
-    Route::group(['prefix'=>'brands'], function(){
-        Route::get('/','BrandController@index')->name('admin.brands');
+    Route::group(['prefix' => 'brands'], function () {
+        Route::get('/', 'BrandController@index')->name('admin.brands');
         Route::post('/add-brand', 'BrandController@store')->name('admin.brands.store');
         Route::get('/edit/{id}', 'BrandController@edit')->name('admin.brands.edit');
         Route::post('/update/{id}', 'BrandController@update')->name('admin.brands.update');
-        Route::get('/delete/{id}','BrandController@destroy')->name('admin.brands.delete');
+        Route::get('/delete/{id}', 'BrandController@destroy')->name('admin.brands.delete');
     });
 
     /**
      *
      * Coupons Routes
      */
-    Route::group(['prefix'=>'coupons'], function(){
-     Route::get('/','CouponsController@index')->name('admin.coupons');
-     Route::post('/add-coupon', 'CouponsController@store')->name('admin.coupons.store');
-     Route::get('/delete/{id}', 'CouponsController@destroy')->name('admin.coupons.delete');
-     Route::get('/edit/{id}', 'CouponsController@edit')->name('admin.coupons.edit');
-     Route::post('/update/{id}', 'CouponsController@update')->name('admin.coupons.update');
-     Route::get('/delete/{id}', 'CouponsController@destroy')->name('admin.coupons.delete');
+    Route::group(['prefix' => 'coupons'], function () {
+        Route::get('/', 'CouponsController@index')->name('admin.coupons');
+        Route::post('/add-coupon', 'CouponsController@store')->name('admin.coupons.store');
+        Route::get('/delete/{id}', 'CouponsController@destroy')->name('admin.coupons.delete');
+        Route::get('/edit/{id}', 'CouponsController@edit')->name('admin.coupons.edit');
+        Route::post('/update/{id}', 'CouponsController@update')->name('admin.coupons.update');
+        Route::get('/delete/{id}', 'CouponsController@destroy')->name('admin.coupons.delete');
     });
 
-     /**
-      * Newsletters Routes
-      */
-      Route::group(['prefix'=>'newsletters'], function(){
+    /**
+     * Newsletters Routes
+     */
+    Route::group(['prefix' => 'newsletters'], function () {
         Route::get('/', 'NewsletterController@index')->name('admin.newsletters');
-        Route::get('delete/{id}','NewsletterController@destroy')->name('admin.newsletters.delete');
+        Route::get('delete/{id}', 'NewsletterController@destroy')->name('admin.newsletters.delete');
     });
 
     /**
      *
      * Products Routes
      */
-    Route::group(['prefix'=>'products'], function(){
+    Route::group(['prefix' => 'products'], function () {
         Route::get('/', 'ProductController@index')->name('admin.products');
         Route::get('/create', 'ProductController@create')->name('admin.products.create');
-        Route::post('/store','ProductController@store')->name('admin.products.store');
+        Route::post('/store', 'ProductController@store')->name('admin.products.store');
         Route::get('/delete/{id}', 'ProductController@destroy')->name('admin.products.delete');
         Route::get('/change-status/{id}', 'ProductController@changeStatus')->name('admin.products.status');
-        Route::get('/edit/{id}','ProductController@edit')->name('admin.products.edit');
+        Route::get('/edit/{id}', 'ProductController@edit')->name('admin.products.edit');
         Route::post('/update-product/{id}', 'ProductController@update')->name('admin.product.update');
     });
 
+    /**
+     *Blog Routes
+     */
+    Route::group(['prefix' => 'blog'], function () {
+     /*
+     * PostCategory routes
+     */
+        Route::group(['prefix' => 'post-categories'], function () {
+            Route::get('/', 'BlogController@index')->name('admin.blog.categories');
+            Route::post('/add-new', 'BlogController@store')->name('admin.blog.categories.store');
+            Route::get('/edit/{id}', 'BlogController@edit')->name('admin.blog.categories.edit');
+            Route::post('/update/{id}', 'BlogController@update')->name('admin.blog.categories.update');
+            Route::get('/delete/{id}', 'BlogController@destroy')->name('admin.blog.categories.delete');
+        });
+    /**
+     *
+     * Post Routes
+     */
+
+     Route::group(['prefix'=>'posts'], function(){
+         Route::get('/','PostController@index')->name('admin.blog.posts');
+         Route::get('/add-new', 'PostController@create')->name('admin.blog.posts.create');
+         Route::post('/store', 'PostController@store')->name('admin.blog.posts.store');
+         Route::get('/edit/{id}', 'PostController@edit')->name('admin.blog.posts.edit');
+         Route::post('/update/{id}', 'PostController@update')->name('admin.blog.posts.update');
+         Route::get('/delete/{id}', 'PostController@destroy')->name('admin.blog.posts.delete');
+     });
+
+    });
 });
 
 Route::group(['namespace' => 'Admin', 'middleware' => 'guest:admin'], function () {

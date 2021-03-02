@@ -134,15 +134,9 @@ class ProductController extends Controller
                 'alert-type'=>'error',
             ]);
         }
-         if (isset($product->image_one)) {
             Storage::delete($product->image_one);
-        }
-        if (isset($product->image_two)) {
             Storage::delete($product->image_two);
-        }
-        if (isset($product->image_three)) {
             Storage::delete($product->image_three);
-        }
 
         $product->delete();
         return redirect()->route('admin.products')->with([

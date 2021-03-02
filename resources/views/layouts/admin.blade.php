@@ -98,7 +98,7 @@
               <span class="menu-item-label">Coupons</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
-        <a href="#" class="sl-menu-link">
+        <a href="" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
             <span class="menu-item-label">Products</span>
@@ -109,6 +109,18 @@
           <li class="nav-item"><a href="{{ route('admin.products.create') }}" class="nav-link">Add Product</a></li>
           <li class="nav-item"><a href="{{ route('admin.products') }}" class="nav-link">All Products</a></li>
         </ul>
+        <a href="#" class="sl-menu-link">
+            <div class="sl-menu-item">
+              <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+              <span class="menu-item-label">Blog</span>
+              <i class="menu-item-arrow fa fa-angle-down"></i>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
+          <ul class="sl-menu-sub nav flex-column">
+            <li class="nav-item"><a href="{{ route('admin.blog.categories') }}" class="nav-link"> Blog Categories</a></li>
+            <li class="nav-item"><a href="{{ route('admin.blog.posts.create') }}" class="nav-link">Add Post</a></li>
+            <li class="nav-item"><a href="{{ route('admin.blog.posts') }}" class="nav-link">All Posts</a></li>
+          </ul>
         <a href="{{ route('admin.newsletters') }}" class="sl-menu-link">
             <div class="sl-menu-item">
               <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
@@ -352,6 +364,20 @@
             })
           });
      </script>
+         <script>
+            $(function(){
+                'use strict';
+
+                // Inline editor
+                var editor = new MediumEditor('.editable');
+
+             // Summernote editor
+                $('#summernote1').summernote({
+                  height: 150,
+                  tooltip: false
+                })
+              });
+         </script>
     <!-- -->
 
     <script src="{{ asset('board/js/starlight.js') }}"></script>
