@@ -25,4 +25,17 @@ Route::group(['middleware' => 'auth'], function () {
      * Newsletters Routes
      */
     Route::post('/add-new','Admin\NewsletterController@store')->name('add.newsletter');
+
+    /**
+     *
+     * Wishlist Routes
+     */
+    Route::get('/add-to-wishlist/{id}', 'WishlistController@add')->name('AddToWishList');
+
+    /***
+     *
+     * Cart Routes
+     */
+    Route::get('/add-to-cart/{id}', 'CartController@add')->name('AddToCart');
+
 });

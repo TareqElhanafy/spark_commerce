@@ -184,10 +184,12 @@
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<button class="product_cart_button">Add to Cart</button>
+													<button class="product_cart_button" data-id="{{ $product->id }}">Add to Cart</button>
 												</div>
 											</div>
+                                            <button class="addtiwishlist" data-id="{{ $product->id }}">
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
+                                        </button>
 											<ul class="product_marks">
                                                 @if (isset($product->discount))
                                                 <li class="product_mark product_discount">-{{ (($product->price - $product->discount)/$product->price)*100 }}%</li>
@@ -324,10 +326,12 @@
 															<input type="radio" name="product_color" style="background:#000000">
 															<input type="radio" name="product_color" style="background:#999999">
 														</div>
-														<button class="product_cart_button">Add to Cart</button>
+														<button class="product_cart_button" data-id="{{ $hot_deal->id }}">Add to Cart</button>
 													</div>
 												</div>
-												<div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                <button class="addtiwishlist" data-id="{{ $hot_deal->id }}">
+                                                    <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                </button>
 												<ul class="product_marks">
                                                     @if(isset($hot_deal->discount))
 													<li class="product_mark product_discount">
@@ -512,7 +516,9 @@
 										<li class="trends_mark trends_new">new</li>
                                         @endif
 									</ul>
-									<div class="trends_fav"><i class="fas fa-heart"></i></div>
+                                    <button class="addtiwishlist" data-id="{{ $get_one->id }}">
+                                        <div class="trends_fav"><i class="fas fa-heart"></i></div>
+                                    </button>
 								</div>
 							</div>
                             @endforeach

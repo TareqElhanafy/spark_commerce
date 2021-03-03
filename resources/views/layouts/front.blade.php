@@ -15,7 +15,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('front/plugins/slick-1.8.0/slick.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('front/styles/main_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('front/styles/responsive.css') }}">
-
+            <!-- toastr -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 </head>
 
 <body>
@@ -446,6 +447,98 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{{ asset('front/plugins/slick-1.8.0/slick.js') }}"></script>
 <script src="{{ asset('front/plugins/easing/easing.js') }}"></script>
 <script src="{{ asset('front/js/custom.js') }}"></script>
+   <!-- toastr -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+   <!--  toaster -->
+   <script>
+
+</script>
+<!--Add to Wishlist -->
+
+<script>
+    $(document).ready(function(){
+     $('.addtiwishlist').on('click', function(){
+       var id = $(this).data('id')
+       if (id) {
+           $.ajax({
+               url:"{{ url('add-to-wishlist/')}}/"+id,
+               type:"GET",
+               dataType:"json",
+               success:function(data){
+                   console.log(data)
+    var type = data.alert
+    console.log(type)
+    console.log(data.alert)
+    console.log(data.message)
+    console.log(id)
+
+    switch (type) {
+        case 'info':
+            toastr.info(data.message)
+            break;
+            case 'success':
+            console.log(data.message)
+            toastr.success(data.message)
+            break;
+            case 'error':
+            toastr.error(data.message)
+            break;
+            case 'warning':
+            toastr.info(data.message)
+            break;
+        default:
+            break;
+    }
+
+               }
+           });
+       }
+     });
+    });
+</script>
+
+<!--Add to Cart -->
+<script>
+    $(document).ready(function(){
+     $('.product_cart_button').on('click', function(){
+       var id = $(this).data('id')
+       if (id) {
+           $.ajax({
+               url:"{{ url('add-to-cart/')}}/"+id,
+               type:"GET",
+               dataType:"json",
+               success:function(data){
+                   console.log(data)
+    var type = data.alert
+    console.log(type)
+    console.log(data.alert)
+    console.log(data.message)
+    console.log(id)
+
+    switch (type) {
+        case 'info':
+            toastr.info(data.message)
+            break;
+            case 'success':
+            console.log(data.message)
+            toastr.success(data.message)
+            break;
+            case 'error':
+            toastr.error(data.message)
+            break;
+            case 'warning':
+            toastr.info(data.message)
+            break;
+        default:
+            break;
+    }
+
+               }
+           });
+       }
+     });
+    });
+</script>
 </body>
 
 </html>
