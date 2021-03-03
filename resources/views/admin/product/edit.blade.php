@@ -303,6 +303,34 @@
                      </div>
                   @enderror
               </div><!-- col-4 -->
+              <div class="col-lg-4">
+                <label class="ckbox">
+                    <input type="checkbox" name="on_sale" value="1"
+                    @if ($product->on_sale == 1)
+                    checked
+                @endif>
+                    <span>On Sale</span>
+                  </label>
+                  @error('on_sale')
+                  <div class="alert alert-danger" role="alert">
+                    {{$message}}
+                     </div>
+                  @enderror
+              </div><!-- col-4 -->
+              <div class="col-lg-4">
+                <label class="ckbox">
+                    <input type="checkbox" name="get_one" value="1"
+                    @if ($product->get_one == 1)
+                    checked
+                @endif>
+                    <span>Get One</span>
+                  </label>
+                  @error('get_one')
+                  <div class="alert alert-danger" role="alert">
+                    {{$message}}
+                     </div>
+                  @enderror
+              </div><!-- col-4 -->
           </div>
 <br><br><br> <br>
           <div class="form-layout-footer">

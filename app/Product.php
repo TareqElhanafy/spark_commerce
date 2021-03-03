@@ -10,7 +10,8 @@ class Product extends Model
         'trend', 'best_rated',  'mid_slider',  'hot_deal', 'main_slider',
         'video_link', 'discount', 'size', 'color',
         'image_three', 'image_two', 'image_one', 'status', 'price', 'quantity',
-        'description', 'name', 'brand_id', 'subcategory_id', 'category_id'
+        'description', 'name', 'brand_id', 'subcategory_id', 'category_id',
+        'on_sale','get_one',
 
     ];
 
@@ -32,5 +33,9 @@ class Product extends Model
     public function getStatus()
     {
         return $this->status == 1 ? "Active":"InActive";
+    }
+    public function scopeStatus($query)
+    {
+        return $query->where('status',1);
     }
 }

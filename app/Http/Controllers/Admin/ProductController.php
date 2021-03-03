@@ -37,10 +37,15 @@ class ProductController extends Controller
         $data['price']=$request->price;
         $data['size']=$request->size;
         $data['color']=$request->color;
+        $data['discount']=$request->discount;
         $data['main_slider']=$request->main_slider;
         $data['mid_slider']=$request->mid_slider;
         $data['best_rated']=$request->best_rated;
         $data['trend']=$request->trend;
+        $data['on_sale']=$request->on_sale;
+        $data['get_one']=$request->get_one;
+        $data['hot_deal']=$request->hot_deal;
+
         if ($request->has('image_one')) {
             $data['image_one'] = $request->image_one->store('products');
         }
@@ -97,10 +102,14 @@ class ProductController extends Controller
         $data['price']=$request->price;
         $data['size']=$request->size;
         $data['color']=$request->color;
+        $data['discount']=$request->discount;
         $data['main_slider']=$request->main_slider;
         $data['mid_slider']=$request->mid_slider;
         $data['best_rated']=$request->best_rated;
         $data['trend']=$request->trend;
+        $data['on_sale']=$request->on_sale;
+        $data['get_one']=$request->get_one;
+        $data['hot_deal']=$request->hot_deal;
         if ($request->has('image_one')) {
             Storage::delete($product->image_one);
             $data['image_one'] = $request->image_one->store('products');

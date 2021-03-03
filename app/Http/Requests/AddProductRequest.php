@@ -44,6 +44,8 @@ class AddProductRequest extends FormRequest
             'mid_slider'=>'nullable|integer',
             'best_rated'=>'nullable|integer',
             'trend'=>'nullable|integer',
+            'on_sale'=>'nullable|integer',
+            'get_one'=>'nullable|integer',
         ];
     }
 }
