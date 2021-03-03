@@ -155,17 +155,20 @@
 
 								<ul class="cat_menu">
                                     @foreach ($categories as $category)
-
-									<li><a href="{{ route('frontpage') }}">{{ $category->name }} <i class="fas fa-chevron-right ml-auto"></i></a></li>
-                                    @endforeach
-									<li class="hassubs">
-										<a href="#">Hardware<i class="fas fa-chevron-right"></i></a>
+                                    @if(isset($category->subcategories))
+                                    <li class="hassubs">
+										<a href="">{{ $category->name }}<i class="fas fa-chevron-right"></i></a>
 										<ul>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
+                                            @foreach ($category->subcategories as $subcategory)
+											<li><a href="">{{ $subcategory->name }}<i class="fas fa-chevron-right"></i></a></li>
+                                            @endforeach
 										</ul>
 									</li>
+                                    @else
+									<li><a href="{{ route('frontpage') }}">{{ $category->name }} <i class="fas fa-chevron-right ml-auto"></i></a></li>
+                                    @endif
+                                    @endforeach
+
 								</ul>
 							</div>
 
