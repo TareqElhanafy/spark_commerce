@@ -21,8 +21,8 @@ class HomeController extends Controller
         $categories  = Category::get();
         $brands  = Brand::get();
         $first_product = Product::status()->first();
-        $products = Product::status()->limit(3)->orderBy('id','desc')->get();
-        $on_sales = Product::status()->where('on_sale',1)->limit(3)->get();
+        $products = Product::status()->limit(16)->orderBy('id','desc')->get();
+        $on_sales = Product::status()->where('on_sale',1)->limit(4)->get();
         $mid_sliders = Product::status()->where('mid_slider',1)->get();
         $hot_deals = Product::status()->where('hot_deal',1)->limit(8)->get();
         $best_rateds = Product::status()->where('best_rated',1)->limit(8)->get();

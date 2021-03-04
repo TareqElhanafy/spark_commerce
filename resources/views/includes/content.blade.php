@@ -169,7 +169,7 @@
 									<div class="featured_slider_item">
 										<div class="border_active"></div>
 										<div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
-											<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ asset('storage/'.$product->image_one) }}" alt=""></div>
+											<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ asset('storage/'.$product->image_one) }}" style="height: 203px; width:203px;" alt=""></div>
 											<div class="product_content">
                                                     @if (isset($product->discount))
                                                     <div class="product_price discount">${{ $product->discount }}<span>${{ $product->price }}</span></div>
@@ -177,7 +177,7 @@
                                                     <div class="product_price discount">${{ $product->price }}</div>
 
                                                     @endif
-												<div class="product_name"><div><a href="product.html">{{ $product->name }}...</a></div></div>
+												<div class="product_name"><div><a href="{{ route('front.show.product',[$product->id,$product->name]) }}">{{ $product->name }}...</a></div></div>
 												<div class="product_extras">
 													<div class="product_color">
 														<input type="radio" checked name="product_color" style="background:#b19c83">
@@ -192,7 +192,7 @@
                                         </button>
 											<ul class="product_marks">
                                                 @if (isset($product->discount))
-                                                <li class="product_mark product_discount">-{{ (($product->price - $product->discount)/$product->price)*100 }}%</li>
+                                                <li class="product_mark product_discount">-{{ round((($product->price - $product->discount)/$product->price)*100,0) }}%</li>
                                                 @else
                                                 <li class="product_mark product_new">new</li>
                                                 @endif
@@ -316,10 +316,10 @@
 										<div class="arrivals_slider_item">
 											<div class="border_active"></div>
 											<div class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-												<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ asset('storage/'.$hot_deal->image_one) }}" alt=""></div>
+												<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ asset('storage/'.$hot_deal->image_one) }}" style="height: 200px; width:200px;" alt=""></div>
 												<div class="product_content">
-													<div class="product_price">${{ $hot_deal->discount }}</div>
-													<div class="product_name"><div><a href="">{{ $hot_deal->name }}</a></div></div>
+													<div class="product_price">${{ $hot_deal->price }}</div>
+													<div class="product_name"><div><a href="{{ route('front.show.product',[$hot_deal->id,$hot_deal->name]) }}">{{ $hot_deal->name }}</a></div></div>
 													<div class="product_extras">
 														<div class="product_color">
 															<input type="radio" checked name="product_color" style="background:#b19c83">
@@ -384,8 +384,8 @@
 									<div class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
 										<div class="bestsellers_image"><img src="{{ asset('storage/'.$best_rated->image_one) }}" alt=""></div>
 										<div class="bestsellers_content">
-											<div class="bestsellers_category"><a href="#">{{ $best_rated->name }}</a></div>
-											<div class="bestsellers_name"><a href="product.html">{{ $best_rated->name }}</a></div>
+											<div class="bestsellers_category"><a href="/">{{ $best_rated->category->name }}</a></div>
+											<div class="bestsellers_name"><a href="{{ route('front.show.product',[$best_rated->id,$best_rated->name]) }}">{{ $best_rated->name }}</a></div>
 											<div class="rating_r rating_r_4 bestsellers_rating"><i></i><i></i><i></i><i></i><i></i></div>
                                             @if(isset($best_rated->discount))
                                             <div class="bestsellers_price discount">${{ $best_rated->discount }}<span>${{ $best_rated->price }}</span></div>
@@ -400,7 +400,7 @@
                                         @if(isset($best_rated->discount))
 										<li class="bestsellers_mark bestsellers_discount">
 
-                                            -{{ (($best_rated->price - $best_rated->discount)/$best_rated->price)*100}}%
+                                            -{{ round((($best_rated->price - $best_rated->discount)/$best_rated->price)*100, 0)}}%
                                         </li>
                                         @else
 										<li class="bestsellers_mark bestsellers_new">new</li>
@@ -499,11 +499,11 @@
 							<!-- Trends Slider Item -->
 							<div class="owl-item">
 								<div class="trends_item is_new">
-									<div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="{{ asset('storage/'.$get_one->image_one) }}" alt=""></div>
+									<div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="{{ asset('storage/'.$get_one->image_one) }}" style="height: 200px; width:200px;" alt=""></div>
 									<div class="trends_content">
 										<div class="trends_category"><a href="#">{{ $get_one->brand->name }}</a></div>
 										<div class="trends_info clearfix">
-											<div class="trends_name"><a href="product.html">{{ $get_one->name }}</a></div>
+											<div class="trends_name"><a href="{{ route('front.show.product',[$get_one->id,$get_one->name]) }}">{{ $get_one->name }}</a></div>
 											<div class="trends_price">${{ $get_one->price }}</div>
 										</div>
 									</div>
@@ -772,8 +772,11 @@
 						<!-- Brands Slider -->
 
 						<div class="owl-carousel owl-theme brands_slider">
+                            @php
+                                $brands = App\Brand::get();
+                            @endphp
                            @foreach ($brands as $brand)
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="{{ asset('storage/'.$brand->logo) }}" alt=""></div></div>
+							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="{{ asset('storage/'.$brand->logo) }}" style="height: 100px; width:100px;"  alt=""></div></div>
                             @endforeach
 
                         </div>

@@ -17,6 +17,7 @@
           <h6 class="card-body-title">Products List
             <a href="" class="btn btn-sm btn-danger" style="float: right;" id="clear" data-toggle="modal" data-target="#modaldemo3">Delete ALL</a>
           </h6>
+          <a href="{{ route('admin.products.create') }}" class="btn btn-sm btn-success" >Add New One</a>
           <div class="table-wrapper">
             <table id="datatable1" class="table display responsive nowrap">
               <thead>

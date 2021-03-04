@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>OneTech</title>
+<title>SparK</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="OneTech shop project">
@@ -56,11 +56,16 @@
 									</li>
 								</ul>
 							</div>
-							<div class="top_bar_user">
+                            @guest
+                            <div class="top_bar_user">
 								<div class="user_icon"><img src="{{ asset('front/images/user.svg') }}" alt=""></div>
 								<div><a href="#">Register</a></div>
 								<div><a href="#">Sign in</a></div>
 							</div>
+                            @else
+
+                            @endguest
+
 						</div>
 					</div>
 				</div>
@@ -76,7 +81,7 @@
 					<!-- Logo -->
 					<div class="col-lg-2 col-sm-3 col-3 order-1">
 						<div class="logo_container">
-							<div class="logo"><a href="#">OneTech</a></div>
+							<div class="logo"><a href="{{ route('frontpage') }}">SparK</a></div>
 						</div>
 					</div>
 
@@ -93,6 +98,9 @@
 												<i class="fas fa-chevron-down"></i>
 												<ul class="custom_list clc">
 													<li><a class="clc" href="{{ route('frontpage') }}">All Categories</a></li>
+                                                    @php
+                                                        $categories = App\Category::get();
+                                                    @endphp
                                                     @foreach ($categories  as $category)
 													<li><a class="clc" href="{{ route('frontpage') }}">{{ $category->name }}</a></li>
                                                     @endforeach
@@ -108,25 +116,32 @@
 
 					<!-- Wishlist -->
 					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
-						<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
-							<div class="wishlist d-flex flex-row align-items-center justify-content-end">
-								<div class="wishlist_icon"><img src="{{ asset('front/images/heart.png') }}" alt=""></div>
-								<div class="wishlist_content">
-									<div class="wishlist_text"><a href="#">Wishlist</a></div>
-									<div class="wishlist_count">115</div>
-								</div>
-							</div>
+                        @guest
+
+                        @else
+                        <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
+                            <div class="wishlist d-flex flex-row align-items-center justify-content-end">
+                                <div class="wishlist_icon"><img src="{{ asset('front/images/heart.png') }}" alt=""></div>
+                                <div class="wishlist_content">
+                                    @php
+                                        $items = App\Wishlist::get();
+                                    @endphp
+                                    <div class="wishlist_text"><a href="">Wishlist</a></div>
+                                    <div class="wishlist_count">{{ $items->count() }}</div>
+                                </div>
+                            </div>
+                        @endguest
 
 							<!-- Cart -->
 							<div class="cart">
 								<div class="cart_container d-flex flex-row align-items-center justify-content-end">
 									<div class="cart_icon">
 										<img src="{{ asset('front/images/cart.png') }}" alt="">
-										<div class="cart_count"><span>10</span></div>
+										<div class="cart_count"><span>{{ Cart::count() }}</span></div>
 									</div>
 									<div class="cart_content">
-										<div class="cart_text"><a href="#">Cart</a></div>
-										<div class="cart_price">$85</div>
+										<div class="cart_text"><a href="{{ route('cart') }}">Cart</a></div>
+										<div class="cart_price">${{ Cart::subtotal() }}</div>
 									</div>
 								</div>
 							</div>
@@ -343,7 +358,7 @@
 				<div class="col-lg-3 footer_col">
 					<div class="footer_column footer_contact">
 						<div class="logo_container">
-							<div class="logo"><a href="#">OneTech</a></div>
+							<div class="logo"><a href="#">SparK</a></div>
 						</div>
 						<div class="footer_title">Got Question? Call Us 24/7</div>
 						<div class="footer_phone">+38 068 005 3570</div>
@@ -450,12 +465,35 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{{ asset('front/plugins/slick-1.8.0/slick.js') }}"></script>
 <script src="{{ asset('front/plugins/easing/easing.js') }}"></script>
 <script src="{{ asset('front/js/custom.js') }}"></script>
+<script src="{{ asset('front/js/product_custom.js') }}"></script>
+<script src="{{ asset('front/js/cart_custom.js') }}"></script>
+
    <!-- toastr -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
    <!--  toaster -->
-   <script>
-
+ <!--  toaster -->
+ <script>
+    @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type') }}"
+    switch (type) {
+        case 'info':
+            toastr.info("{{ Session::get('message') }}")
+            break;
+            case 'success':
+            toastr.success("{{ Session::get('message') }}")
+            break;
+            case 'error':
+            toastr.error("{{ Session::get('message') }}")
+            break;
+            case 'warning':
+            toastr.info("{{ Session::get('message') }}")
+            break;
+        default:
+            break;
+    }
+    @endif
 </script>
+
 <!--Add to Wishlist -->
 
 <script>
@@ -470,11 +508,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                success:function(data){
                    console.log(data)
     var type = data.alert
-    console.log(type)
-    console.log(data.alert)
-    console.log(data.message)
-    console.log(id)
-
     switch (type) {
         case 'info':
             toastr.info(data.message)
@@ -500,24 +533,20 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     });
 </script>
 
-<!--Add to Cart -->
+
+<!--Add to Cart from front page -->
 <script>
     $(document).ready(function(){
      $('.product_cart_button').on('click', function(){
        var id = $(this).data('id')
        if (id) {
            $.ajax({
-               url:"{{ url('add-to-cart/')}}/"+id,
+               url:"{{ url('cart/add-to-cart/')}}/"+id,
                type:"GET",
                dataType:"json",
                success:function(data){
                    console.log(data)
     var type = data.alert
-    console.log(type)
-    console.log(data.alert)
-    console.log(data.message)
-    console.log(id)
-
     switch (type) {
         case 'info':
             toastr.info(data.message)
@@ -535,13 +564,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         default:
             break;
     }
-
                }
            });
        }
      });
     });
 </script>
+
 </body>
 
 </html>

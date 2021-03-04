@@ -14,7 +14,7 @@ class AddGetOneColumn extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->integer('get_one');
+            $table->integer('get_one')->nullable();
         });
     }
 
