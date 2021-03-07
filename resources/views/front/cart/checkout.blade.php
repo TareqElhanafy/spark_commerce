@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="cart_container">
-                    <div class="cart_title">Shopping Cart</div>
+                    <div class="cart_title">Checkout</div>
                     <div class="cart_items">
                         <ul class="cart_list">
                             @foreach ($content as $row)
@@ -52,16 +52,45 @@
                         </ul>
                     </div>
                     <!-- Order Total -->
-                    <div class="order_total">
-                        <div class="order_total_content text-md-right">
-                            <div class="order_total_title">Order Total with Taxs:</div>
-                            <div class="order_total_amount">${{ Cart::total() }}</div>
-                        </div>
-                    </div>
+                    <br>
+                    <div class="order_total_content" style="padding: 15px;">
 
+                        <h5 style="margin-left: 20px;"> Apply Coupon </h5>
+                            <form method="post" action="">
+                                @csrf
+                                <div class="form group col-lg-4">
+                                    <input type="text" name="coupon" class="form-control" required="" placeholder="Enter Your Coupon">
+                                </div><br>
+                       <button type="submit" class="btn btn-danger ml-2">Submit
+                       </button>
+                            </form>
+
+                        </div>
+                        <ul class="list-group col-lg-4" style="float: right;">
+                           <li class="list-group-item">Subtotal : <span style="float: right;">
+                           </span> </li>
+                            <li class="list-group-item">Coupon : ()
+                           <a href="" class="btn btn-danger btn-sm">X</a>
+                        <span style="float: right;"></span> </li>
+                           <li class="list-group-item">Subtotal : <span style="float: right;">
+                            </span> </li>
+
+
+
+
+                           <li class="list-group-item">Shiping Charge : <span style="float: right;"> </span> </li>
+                           <li class="list-group-item">Vat : <span style="float: right;"> </span> </li>
+
+                           <li class="list-group-item">Total : <span style="float: right;"> </span> </li>
+                    <li class="list-group-item">Total : <span style="float: right;"></span> </li>
+
+                       </ul>
+                    </div>
+                </div>
+                    </div>
                     <div class="cart_buttons">
                         <a type="button" class="button cart_button_clear">Clear Your Cart</a>
-                        <a href="{{ route('checkout') }}" class="button cart_button_checkout">CheckOut</a>
+                        <a type="button" class="button cart_button_checkout">CheckOut</a>
                     </div>
                 </div>
             </div>
@@ -69,3 +98,4 @@
     </div>
 </div>
 @endsection
+

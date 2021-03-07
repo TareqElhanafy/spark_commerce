@@ -126,7 +126,7 @@
                                     @php
                                         $items = App\Wishlist::get();
                                     @endphp
-                                    <div class="wishlist_text"><a href="">Wishlist</a></div>
+                                    <div class="wishlist_text"><a href="{{ route('wishlist') }}">Wishlist</a></div>
                                     <div class="wishlist_count">{{ $items->count() }}</div>
                                 </div>
                             </div>
@@ -502,7 +502,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
        var id = $(this).data('id')
        if (id) {
            $.ajax({
-               url:"{{ url('add-to-wishlist/')}}/"+id,
+               url:"{{ url('wishlist/add-to-wishlist/')}}/"+id,
                type:"GET",
                dataType:"json",
                success:function(data){

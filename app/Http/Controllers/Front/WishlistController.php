@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Auth;
 
 class WishlistController extends Controller
 {
+
+    public function index()
+    {
+        $wishlistItems = Wishlist::get();
+        return view('front.cart.wishlist', compact('wishlistItems'));
+    }
     public function add($id)
     {
         if (!Auth::check()) {

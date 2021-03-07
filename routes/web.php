@@ -25,7 +25,12 @@ Route::post('/add-new', 'Admin\NewsletterController@store')->name('add.newslette
  *
  * Wishlist Routes
  */
-Route::get('/add-to-wishlist/{id}', 'Front\WishlistController@add')->name('AddToWishList');
+Route::group(['prefix' => 'wishlist'], function () {
+    Route::get('/', 'Front\WishlistController@index')->name('wishlist');
+    Route::get('/add-to-wishlist/{id}', 'Front\WishlistController@add')->name('AddToWishList');
+
+});
+
 
 /***
  *
@@ -37,7 +42,7 @@ Route::group(['prefix' => 'cart'], function () {
     Route::get('/show-cart', 'Front\CartController@show')->name('cart');
     Route::post('/update-qty-cart/{rowId}', 'Front\CartController@updateqty')->name('cart.update');
     Route::get('/delete-item/{rowId}', 'Front\CartController@destroy')->name('cart.delete');
-
+    Route::get('/checkout', 'Front\CartController@checkout')->name('checkout');
 });
 
 /**
@@ -46,7 +51,7 @@ Route::group(['prefix' => 'cart'], function () {
  */
 Route::group(['prefix' => 'products'], function () {
     Route::get('/show/{id}/{name}', 'Front\ProductController@show')->name('front.show.product');
-    Route::post('/add-product/{id}', 'Front\ProductController@addproducttocart')->name('front.product.add');
+    Route::get('/add-product/{id}', 'Front\ProductController@addproducttocart')->name('front.product.add');
 });
 
 Auth::routes();

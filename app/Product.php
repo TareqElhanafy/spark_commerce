@@ -11,7 +11,7 @@ class Product extends Model
         'video_link', 'discount', 'size', 'color',
         'image_three', 'image_two', 'image_one', 'status', 'price', 'quantity',
         'description', 'name', 'brand_id', 'subcategory_id', 'category_id',
-        'on_sale','get_one',
+        'on_sale', 'get_one',
 
     ];
 
@@ -32,10 +32,14 @@ class Product extends Model
 
     public function getStatus()
     {
-        return $this->status == 1 ? "Active":"InActive";
+        return $this->status == 1 ? "Active" : "InActive";
     }
     public function scopeStatus($query)
     {
-        return $query->where('status',1);
+        return $query->where('status', 1);
+    }
+    public function wishlists()
+    {
+        return $this->hasMany(Wishlist::class, 'product_id');
     }
 }

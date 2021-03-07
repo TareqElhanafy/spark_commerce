@@ -81,4 +81,18 @@ class CartController extends Controller
             'alert-type' => 'success',
         ]);
     }
+
+    public function checkout()
+    {
+        if (!Auth::check()) {
+            return redirect()->route('login')->with([
+                'alert-type' => 'warning',
+                'message' => 'You must login first',
+            ]);
+        } else{
+        $content = \Cart::content();
+        return view('front.cart.checkout', compact('content'));
+        }
+    }
 }
+
