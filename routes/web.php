@@ -36,6 +36,7 @@ Route::group(['prefix' => 'cart'], function () {
     Route::get('/check', 'Front\CartController@check');
     Route::get('/show-cart', 'Front\CartController@show')->name('cart');
     Route::post('/update-qty-cart/{rowId}', 'Front\CartController@updateqty')->name('cart.update');
+    Route::get('/delete-item/{rowId}', 'Front\CartController@destroy')->name('cart.delete');
 
 });
 

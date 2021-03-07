@@ -72,4 +72,13 @@ class CartController extends Controller
             'alert-type' => 'success',
         ]);
     }
+
+    public function destroy($rowId)
+    {
+        \Cart::remove($rowId);
+        return redirect()->back()->with([
+            'message' => 'This product item deleted succeessfully',
+            'alert-type' => 'success',
+        ]);
+    }
 }

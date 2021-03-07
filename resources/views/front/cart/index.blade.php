@@ -41,13 +41,16 @@
                                         <div class="cart_item_title">Total</div>
                                         <div class="cart_item_text">${{ $row->subtotal() }}</div>
                                     </div>
+                                    <div class="cart_item_total cart_info_col">
+                                        <div class="cart_item_title">Actions</div>
+                                        <div class="cart_item_text"><a href="{{ route('cart.delete',$row->rowId) }}" class="btn btn-sm btn-danger">Delete Item</a></div>
+                                    </div>
                                 </div>
                             </li>
 
                             @endforeach
                         </ul>
                     </div>
-
                     <!-- Order Total -->
                     <div class="order_total">
                         <div class="order_total_content text-md-right">
