@@ -6,13 +6,14 @@ use App\Brand;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\SubCategory;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function show($id, $name)
     {
-        $product = Product::find($id)->first();
+        $product = Product::find($id);
         if (!$product) {
             return redirect()->route('frontpage')->with([
                 'message' => ' Sorry!, This product is not exsisted .. try again later',
@@ -67,5 +68,46 @@ class ProductController extends Controller
             'message' => 'This product added to your cart succeessfully',
             'alert-type' => 'success',
         ]);
+    }
+
+    public function SubcategoryProducts($id)
+    {
+        $subcategory = SubCategory::find($id);
+        if (!$subcategory) {
+            return redirect()->back()->with([
+                'alert-type' => 'danger',
+                'message' => 'There are no products for this subcategory'
+            ]);
+        }
+
+        $products = Product::where('subcategory_id',$id)->paginate(5);
+        $categories = Category::get();
+        $brands = $subcategory->products()->with('brand')
+        ->get()
+        ->pluck('brand')
+        ->unique('id')
+        ->values();
+        return view('front.shop.subcategory.index', compact('products', 'categories', 'brands'));
+
+    }
+    public function CategoryProducts($id)
+    {
+        $category = Category::find($id);
+        if (!$category) {
+            return redirect()->back()->with([
+                'alert-type' => 'danger',
+                'message' => 'There are no products for this category'
+            ]);
+        }
+
+        $products = Product::where('category_id',$id)->paginate(5);
+        $categories = Category::get();
+        $brands = $category->products()->with('brand')
+        ->get()
+        ->pluck('brand')
+        ->unique('id')
+        ->values();
+        return view('front.shop.category.index', compact('products', 'categories', 'brands'));
+
     }
 }

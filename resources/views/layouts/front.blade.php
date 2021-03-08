@@ -172,15 +172,15 @@
                                     @foreach ($categories as $category)
                                     @if(isset($category->subcategories))
                                     <li class="hassubs">
-										<a href="">{{ $category->name }}<i class="fas fa-chevron-right"></i></a>
+										<a href="{{ route('front.category.products',$category->id) }}">{{ $category->name }}<i class="fas fa-chevron-right"></i></a>
 										<ul>
                                             @foreach ($category->subcategories as $subcategory)
-											<li><a href="">{{ $subcategory->name }}<i class="fas fa-chevron-right"></i></a></li>
+											<li><a href="{{ route('front.subcategory.products',$subcategory->id) }}">{{ $subcategory->name }}<i class="fas fa-chevron-right"></i></a></li>
                                             @endforeach
 										</ul>
 									</li>
                                     @else
-									<li><a href="{{ route('frontpage') }}">{{ $category->name }} <i class="fas fa-chevron-right ml-auto"></i></a></li>
+									<li><a href="{{ route('front.category.products',$category->id) }}">{{ $category->name }} <i class="fas fa-chevron-right ml-auto"></i></a></li>
                                     @endif
                                     @endforeach
 

@@ -26,6 +26,7 @@
                   <th class="wd-15p">Product name</th>
                   <th class="wd-15p">Image</th>
                   <th class="wd-15p">Category name</th>
+                  <th class="wd-15p">Sub-Category name</th>
                   <th class="wd-15p">Quantity</th>
                   <th class="wd-15p">Price</th>
                   <th class="wd-15p">Status</th>
@@ -42,6 +43,7 @@
                       <img src="{{ asset('storage/'.$product->image_one) }}" style="height: 100px; width:100px;" alt="">
                   </td>
                   <td>{{ $product->category->name }}</td>
+                  <td>{{ $product->subCategory->name }}</td>
                   <td>{{ $product->quantity }}</td>
                   <td>{{ $product->price }}</td>
                   <td>
