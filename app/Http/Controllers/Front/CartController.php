@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Coupon;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ApplyCouponRequest;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -89,10 +92,40 @@ class CartController extends Controller
                 'alert-type' => 'warning',
                 'message' => 'You must login first',
             ]);
-        } else{
-        $content = \Cart::content();
-        return view('front.cart.checkout', compact('content'));
+        } else {
+            $content = \Cart::content();
+            return view('front.cart.checkout', compact('content'));
         }
     }
-}
 
+    public function coupon(ApplyCouponRequest $request)
+    {
+        $check = Coupon::where('code', $request->coupon)->first();
+        if (!$check) {
+            return redirect()->back()->with([
+                'alert-type' => 'danger',
+                'message' => 'Invaild Coupon'
+            ]);
+        } else {
+            echo "$check";
+            Session::put('coupon', [
+                'name' => $check->code,
+                'discount' => $check->discount,
+                'balance' => \Cart::subtotal() - $check->discount
+            ]);
+            return redirect()->back()->with([
+                'alert-type' => 'success',
+                'message' => 'Coupon Applied'
+            ]);
+        }
+    }
+
+    public function removecoupon()
+    {
+        Session::forget('coupon');
+        return redirect()->back()->with([
+            'alert-type' => 'success',
+            'message' => 'Coupon Removed'
+        ]);
+    }
+}

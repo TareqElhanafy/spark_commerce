@@ -367,7 +367,7 @@
 						<div class="tabs clearfix tabs-right">
 							<div class="new_arrivals_title">Hot Best Rated</div>
 							<ul class="clearfix">
-								<li class="active">Top 20</li>
+								<li class="active">Top 8</li>
 							</ul>
 							<div class="tabs_line"><span></span></div>
 						</div>

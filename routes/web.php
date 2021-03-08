@@ -28,7 +28,7 @@ Route::post('/add-new', 'Admin\NewsletterController@store')->name('add.newslette
 Route::group(['prefix' => 'wishlist'], function () {
     Route::get('/', 'Front\WishlistController@index')->name('wishlist');
     Route::get('/add-to-wishlist/{id}', 'Front\WishlistController@add')->name('AddToWishList');
-
+    Route::get('/clear', 'Front\WishlistController@clear')->name('wishlist.clear');
 });
 
 
@@ -43,6 +43,8 @@ Route::group(['prefix' => 'cart'], function () {
     Route::post('/update-qty-cart/{rowId}', 'Front\CartController@updateqty')->name('cart.update');
     Route::get('/delete-item/{rowId}', 'Front\CartController@destroy')->name('cart.delete');
     Route::get('/checkout', 'Front\CartController@checkout')->name('checkout');
+    Route::post('/add-coupon', 'Front\CartController@coupon')->name('apply.coupon');
+    Route::get('/remvoe-coupon', 'Front\CartController@removecoupon')->name('remove.coupon');
 });
 
 /**
@@ -52,6 +54,25 @@ Route::group(['prefix' => 'cart'], function () {
 Route::group(['prefix' => 'products'], function () {
     Route::get('/show/{id}/{name}', 'Front\ProductController@show')->name('front.show.product');
     Route::get('/add-product/{id}', 'Front\ProductController@addproducttocart')->name('front.product.add');
+});
+
+
+/**
+ *
+ * Languages Routes
+ */
+Route::group(['prefix' => 'langs'], function () {
+    Route::get('/set-english', 'HomeController@setEn')->name('languages.en');
+    Route::get('/set-arabic', 'HomeController@setAr')->name('languages.ar');
+});
+
+/**
+ *
+ * Blog Routes
+ */
+Route::group(['prefix' => 'blog'], function () {
+    Route::get('/', 'BlogController@index')->name('blog');
+    Route::get('/post/{id}', 'BlogController@post')->name('blog.post');
 });
 
 Auth::routes();

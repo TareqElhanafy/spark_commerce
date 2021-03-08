@@ -6,8 +6,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
+                @if($wishlistItems->count() > 0)
                 <div class="cart_container">
-                    <div class="cart_title">Shopping Cart</div>
+                    <div class="cart_title">Wishlist</div>
                     <div class="cart_items">
                         <ul class="cart_list">
                             @foreach ($wishlistItems as $row)
@@ -38,7 +39,13 @@
                             @endforeach
                         </ul>
                     </div>
+                    <div class="cart_buttons">
+                        <a href="{{ route('wishlist.clear') }}" class="button cart_button_clear">Clear Your Wishlist</a>
+                    </div>
                 </div>
+                @else
+                <p class="text-center"><strong>You have no items in your wishlist</strong></p>
+                @endif
             </div>
         </div>
     </div>

@@ -53,10 +53,13 @@
                     </div>
                     <!-- Order Total -->
                     <br>
+                    @if (Session::has('coupon'))
+
+                   @else
                     <div class="order_total_content" style="padding: 15px;">
 
                         <h5 style="margin-left: 20px;"> Apply Coupon </h5>
-                            <form method="post" action="">
+                            <form method="post" action="{{ route('apply.coupon') }}">
                                 @csrf
                                 <div class="form group col-lg-4">
                                     <input type="text" name="coupon" class="form-control" required="" placeholder="Enter Your Coupon">
@@ -64,25 +67,35 @@
                        <button type="submit" class="btn btn-danger ml-2">Submit
                        </button>
                             </form>
-
+                           @endif
                         </div>
+                        @if(Session::has('coupon'))
                         <ul class="list-group col-lg-4" style="float: right;">
                            <li class="list-group-item">Subtotal : <span style="float: right;">
+                            ${{ Session::get('coupon')['balance'] }}
                            </span> </li>
-                            <li class="list-group-item">Coupon : ()
-                           <a href="" class="btn btn-danger btn-sm">X</a>
-                        <span style="float: right;"></span> </li>
+                            <li class="list-group-item">Coupon : ({{ Session::get('coupon')['name'] }})
+                           <a href="{{ route('remove.coupon') }}" class="btn btn-danger btn-sm">X</a>
+                        <span style="float: right;">${{ Session::get('coupon')['discount'] }}</span> </li>
+                        @else
                            <li class="list-group-item">Subtotal : <span style="float: right;">
+                            ${{ Cart::subtotal() }}
                             </span> </li>
+                              @endif
 
+                              @php
+                               $setting= DB::table('settings')->first();
+                               $vat=$setting->vat;
+                               $shipping_charge = $setting->shipping_charge;
+                              @endphp
 
-
-
-                           <li class="list-group-item">Shiping Charge : <span style="float: right;"> </span> </li>
-                           <li class="list-group-item">Vat : <span style="float: right;"> </span> </li>
-
-                           <li class="list-group-item">Total : <span style="float: right;"> </span> </li>
-                    <li class="list-group-item">Total : <span style="float: right;"></span> </li>
+                           <li class="list-group-item">Shiping Charge : <span style="float: right;">${{ $shipping_charge }} </span> </li>
+                           <li class="list-group-item">Vat : <span style="float: right;">${{ $vat }} </span> </li>
+@if (Session::has('coupon'))
+<li class="list-group-item">Total : <span style="float: right;">${{ Session::get('coupon')['balance'] + $vat + $shipping_charge }}  </span> </li>
+@else
+<li class="list-group-item">Total : <span style="float: right;">${{ Cart::subtotal() + $vat + $shipping_charge }}</span> </li>
+@endif
 
                        </ul>
                     </div>

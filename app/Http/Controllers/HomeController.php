@@ -7,6 +7,7 @@ use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -40,9 +41,24 @@ class HomeController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login')->with([
+        return redirect()->route('frontpage')->with([
             'message' => 'successfully logout',
             'alert-type' => 'success',
         ]);
+    }
+
+    public function setEn()
+    {
+        $lang = Session::get('lang');
+        Session::forget('lang');
+        Session::put('lang','English');
+        return redirect()->back();
+    }
+    public function setAr()
+    {
+        $lang = Session::get('lang');
+        Session::forget('lang');
+        Session::put('lang','Arabic');
+        return redirect()->back();
     }
 }

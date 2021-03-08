@@ -48,4 +48,13 @@ class WishlistController extends Controller
             ]);
         }
     }
+
+    public function clear()
+    {
+        Wishlist::truncate();
+        return redirect()->back()->with([
+            'message' => 'Your wishlist is empty',
+            'alert-type' => 'success'
+        ]);
+    }
 }

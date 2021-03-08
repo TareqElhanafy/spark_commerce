@@ -38,32 +38,31 @@
 						<div class="top_bar_content ml-auto">
 							<div class="top_bar_menu">
 								<ul class="standard_dropdown top_bar_dropdown">
+                                    @php
+                                        $lang = Session::get('lang');
+                                    @endphp
+                                    @if($lang === 'English')
 									<li>
-										<a href="#">English<i class="fas fa-chevron-down"></i></a>
-										<ul>
-											<li><a href="#">Italian</a></li>
-											<li><a href="#">Spanish</a></li>
-											<li><a href="#">Japanese</a></li>
-										</ul>
+										<a href="{{ route('languages.ar') }}">Arabic<i class="fas fa-chevron-down"></i></a>
 									</li>
-									<li>
-										<a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
-										<ul>
-											<li><a href="#">EUR Euro</a></li>
-											<li><a href="#">GBP British Pound</a></li>
-											<li><a href="#">JPY Japanese Yen</a></li>
-										</ul>
+                                    @else
+                                    <li>
+										<a href="{{ route('languages.en') }}">English<i class="fas fa-chevron-down"></i></a>
 									</li>
+                                    @endif
 								</ul>
 							</div>
                             @guest
                             <div class="top_bar_user">
 								<div class="user_icon"><img src="{{ asset('front/images/user.svg') }}" alt=""></div>
-								<div><a href="#">Register</a></div>
-								<div><a href="#">Sign in</a></div>
+								<div><a href="{{ route('register') }}">Register</a></div>
+								<div><a href="{{ route('login') }}">Sign in</a></div>
 							</div>
                             @else
-
+                            <div class="top_bar_user">
+								<div class="user_icon"><img src="{{ asset('front/images/user.svg') }}" alt=""></div>
+								<div><a href="{{ route('user.logout') }}">Logout</a></div>
+							</div>
                             @endguest
 
 						</div>
@@ -116,10 +115,11 @@
 
 					<!-- Wishlist -->
 					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
-                        @guest
 
-                        @else
                         <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
+                            @guest
+
+                            @else
                             <div class="wishlist d-flex flex-row align-items-center justify-content-end">
                                 <div class="wishlist_icon"><img src="{{ asset('front/images/heart.png') }}" alt=""></div>
                                 <div class="wishlist_content">
@@ -236,7 +236,7 @@
 											<li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
 										</ul>
 									</li>
-									<li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="{{ route('blog') }}">Blog<i class="fas fa-chevron-down"></i></a></li>
 									<li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
 								</ul>
 							</div>
@@ -435,7 +435,7 @@
 
 					<div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
 						<div class="copyright_content"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 </div>
 						<div class="logos ml-sm-auto">
@@ -467,6 +467,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{{ asset('front/js/custom.js') }}"></script>
 <script src="{{ asset('front/js/product_custom.js') }}"></script>
 <script src="{{ asset('front/js/cart_custom.js') }}"></script>
+<script src="{{ asset('front/js/blog_custom.js') }}"></script>
+<script src="{{ asset('front/js/blog_single_custom.js') }}"></script>
 
    <!-- toastr -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -506,7 +508,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                type:"GET",
                dataType:"json",
                success:function(data){
-                   console.log(data)
     var type = data.alert
     switch (type) {
         case 'info':
@@ -545,7 +546,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                type:"GET",
                dataType:"json",
                success:function(data){
-                   console.log(data)
     var type = data.alert
     switch (type) {
         case 'info':
