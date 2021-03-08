@@ -169,7 +169,7 @@
 									<div class="featured_slider_item">
 										<div class="border_active"></div>
 										<div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
-											<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ asset('storage/'.$product->image_one) }}" style="height: 203px; width:203px;" alt=""></div>
+											<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ asset('storage/'.$product->image_one) }}" style="height: 100px; width:100px;" alt=""></div>
 											<div class="product_content">
                                                     @if (isset($product->discount))
                                                     <div class="product_price discount">${{ $product->discount }}<span>${{ $product->price }}</span></div>
@@ -194,7 +194,7 @@
                                                 @if (isset($product->discount))
                                                 <li class="product_mark product_discount">-{{ round((($product->price - $product->discount)/$product->price)*100,0) }}%</li>
                                                 @else
-                                                <li class="product_mark product_new">new</li>
+                                                <li class="product_mark product_discount" style="background-color: blue;">new</li>
                                                 @endif
 											</ul>
 										</div>
@@ -277,7 +277,7 @@
 								</div>
 								<div class="col-lg-8 col-md-6 fill_height">
 									<div class="banner_2_image_container">
-										<div class="banner_2_image"><img src="{{ asset('storage/'.$mid_slider->image_one) }}" style="height: 452px; width:251px" alt=""></div>
+										<div class="banner_2_image"><img src="{{ asset('storage/'.$mid_slider->image_one) }}" style="height:100px; width:100px" alt=""></div>
 									</div>
 								</div>
 							</div>
@@ -316,7 +316,7 @@
 										<div class="arrivals_slider_item">
 											<div class="border_active"></div>
 											<div class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-												<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ asset('storage/'.$hot_deal->image_one) }}" style="height: 200px; width:200px;" alt=""></div>
+												<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ asset('storage/'.$hot_deal->image_one) }}" style="height: 100px; width:100px;" alt=""></div>
 												<div class="product_content">
 													<div class="product_price">${{ $hot_deal->price }}</div>
 													<div class="product_name"><div><a href="{{ route('front.show.product',[$hot_deal->id,$hot_deal->name]) }}">{{ $hot_deal->name }}</a></div></div>
@@ -338,7 +338,7 @@
                                                             -{{ (($hot_deal->price - $hot_deal->discount)/$hot_deal->price)*100 }}%
                                                     </li>
                                                     @else
-													<li class="product_mark product_new">new</li>
+                                                    <li class="product_mark product_discount" style="background-color: blue;">new</li>
                                                     @endif
 												</ul>
 											</div>
@@ -403,7 +403,7 @@
                                             -{{ round((($best_rated->price - $best_rated->discount)/$best_rated->price)*100, 0)}}%
                                         </li>
                                         @else
-										<li class="bestsellers_mark bestsellers_new">new</li>
+                                        <li class="bestsellers_mark bestsellers_discount" style="background-color: blue;">new</li>
                                         @endif
 									</ul>
 								</div>
@@ -499,7 +499,7 @@
 							<!-- Trends Slider Item -->
 							<div class="owl-item">
 								<div class="trends_item is_new">
-									<div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="{{ asset('storage/'.$get_one->image_one) }}" style="height: 200px; width:200px;" alt=""></div>
+									<div class="trends_image d-flex flex-column align-items-center justify-content-center"><img src="{{ asset('storage/'.$get_one->image_one) }}" style="height: 100px; width:100px;" alt=""></div>
 									<div class="trends_content">
 										<div class="trends_category"><a href="#">{{ $get_one->brand->name }}</a></div>
 										<div class="trends_info clearfix">
@@ -510,10 +510,10 @@
 									<ul class="trends_marks">
                                         @if(isset($get_one->discount))
 										<li class="trends_mark trends_discount">
-                                            -{{ (($get_one->price - $get_one->discount)/$get_one->price)*100}}%
+                                            -{{ round((($best_rated->price - $best_rated->discount)/$best_rated->price)*100, 0)}}%
                                         </li>
                                         @else
-										<li class="trends_mark trends_new">new</li>
+										<li class="trends_mark trends_discount" style="background-color: blue;">new</li>
                                         @endif
 									</ul>
                                     <button class="addtiwishlist" data-id="{{ $get_one->id }}">
@@ -776,7 +776,7 @@
                                 $brands = App\Brand::get();
                             @endphp
                            @foreach ($brands as $brand)
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="{{ asset('storage/'.$brand->logo) }}" style="height: 100px; width:100px;"  alt=""></div></div>
+							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="{{ asset('storage/'.$brand->logo) }}" style="height: 50px; width:50px;"  alt=""></div></div>
                             @endforeach
 
                         </div>
