@@ -469,6 +469,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{{ asset('front/js/cart_custom.js') }}"></script>
 <script src="{{ asset('front/js/blog_custom.js') }}"></script>
 <script src="{{ asset('front/js/blog_single_custom.js') }}"></script>
+<script src="{{ asset('front/js/shop_custom.js') }}"></script>
 
    <!-- toastr -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

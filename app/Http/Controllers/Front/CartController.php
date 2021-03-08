@@ -128,4 +128,17 @@ class CartController extends Controller
             'message' => 'Coupon Removed'
         ]);
     }
+
+    public function payment()
+    {
+        if (!Auth::check()) {
+            return redirect()->route('login')->with([
+                'alert-type' => 'warning',
+                'message' => 'You must login first',
+            ]);
+        } else {
+            $cart = \Cart::content();
+            return view('front.cart.payment', compact('cart'));
+        }
+    }
 }

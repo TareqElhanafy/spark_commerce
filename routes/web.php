@@ -45,6 +45,7 @@ Route::group(['prefix' => 'cart'], function () {
     Route::get('/checkout', 'Front\CartController@checkout')->name('checkout');
     Route::post('/add-coupon', 'Front\CartController@coupon')->name('apply.coupon');
     Route::get('/remvoe-coupon', 'Front\CartController@removecoupon')->name('remove.coupon');
+    Route::get('/payment', 'Front\CartController@payment')->name('payment');
 });
 
 /**

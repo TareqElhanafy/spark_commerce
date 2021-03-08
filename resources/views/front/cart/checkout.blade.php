@@ -103,7 +103,7 @@
                     </div>
                     <div class="cart_buttons">
                         <a type="button" class="button cart_button_clear">Clear Your Cart</a>
-                        <a type="button" class="button cart_button_checkout">CheckOut</a>
+                        <a href="{{ route('payment') }}" class="button cart_button_checkout">Payment</a>
                     </div>
                 </div>
             </div>
