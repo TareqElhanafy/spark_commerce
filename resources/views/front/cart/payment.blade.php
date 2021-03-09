@@ -73,8 +73,14 @@ $vat = $setting->vat;
                     <div class="cart_item_text">${{ $row->price }}</div>
                 </div>
                 <div class="cart_item_total cart_info_col">
-                    <div class="cart_item_title"><b>Total</b></div>
-                    <div class="cart_item_text">${{ $row->price*$row->qty }}</div>
+                    <div class="cart_item_title"><b>SubTotal</b></div>
+                    <div class="cart_item_text">
+                        @if(Session::has('coupon'))
+                        ${{ Session::get('coupon')['balance'] }}
+                        @else
+                        ${{ Cart::subtotal() }}
+                        @endif
+                    </div>
                 </div>
 
 
@@ -121,30 +127,50 @@ $vat = $setting->vat;
                     <div class="contact_form_container">
                         <div class="contact_form_title text-center">Shipping Address</div>
 
-         <form action="" id="contact_form" method="post">
+         <form action="{{ route('do.payment') }}" id="contact_form" method="post">
              @csrf
 
           <div class="form-group">
     <label for="exampleInputEmail1">Full Name</label>
     <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Your Full Name " name="name" required="">
+    @error('name')
+    <div class="alert alert-danger" role="alert">
+      {{$message}}
+       </div>
+    @enderror
          </div>
 
 
          <div class="form-group">
     <label for="exampleInputEmail1">Phone</label>
     <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Your Phone " name="phone" required="">
+    @error('phone')
+    <div class="alert alert-danger" role="alert">
+      {{$message}}
+       </div>
+    @enderror
          </div>
 
 
          <div class="form-group">
     <label for="exampleInputEmail1">Email</label>
     <input type="email" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Your Email " name="email" required="">
+    @error('email')
+    <div class="alert alert-danger" role="alert">
+      {{$message}}
+       </div>
+    @enderror
          </div>
 
 
          <div class="form-group">
     <label for="exampleInputEmail1">Address</label>
     <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Your Address" name="address" required="">
+    @error('address')
+    <div class="alert alert-danger" role="alert">
+      {{$message}}
+       </div>
+    @enderror
          </div>
 
 
@@ -152,6 +178,11 @@ $vat = $setting->vat;
          <div class="form-group">
     <label for="exampleInputEmail1">City</label>
     <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Your City" name="city" required="">
+    @error('city')
+    <div class="alert alert-danger" role="alert">
+      {{$message}}
+       </div>
+    @enderror
          </div>
 
     <div class="contact_form_title text-center"> Payment By </div>
@@ -162,9 +193,12 @@ $vat = $setting->vat;
              <li><input type="radio" name="payment" value="paypal"><img src="{{ asset('front/images/paypal.png') }}" style="width: 100px; height: 60px;"> </li>
 
               <li><input type="radio" name="payment" value="ideal"><img src="{{ asset('front/images/mollie.png') }}" style="width: 100px; height: 60px;"> </li>
-
         </ul>
-
+        @error('payment')
+        <div class="alert alert-danger" role="alert">
+          {{$message}}
+           </div>
+        @enderror
     </div>
 
 

@@ -38,8 +38,14 @@
                                         <div class="cart_item_text">${{ $row->price }}</div>
                                     </div>
                                     <div class="cart_item_total cart_info_col">
-                                        <div class="cart_item_title">Total</div>
-                                        <div class="cart_item_text">${{ $row->subtotal() }}</div>
+                                        <div class="cart_item_title">SubTotal</div>
+                                        <div class="cart_item_text">
+                                            @if(Session::has('coupon'))
+                                            ${{ Session::get('coupon')['balance'] }}
+                                            @else
+                                            ${{ Cart::subtotal() }}
+                                            @endif
+                                        </div>
                                     </div>
                                     <div class="cart_item_total cart_info_col">
                                         <div class="cart_item_title">Actions</div>
