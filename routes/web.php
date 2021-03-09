@@ -86,3 +86,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@home')->name('home');
     Route::get('/user/logout', 'HomeController@logout')->name('user.logout');
 });
+
+Route::get('/register', function(){
+    return redirect()->route('login');
+});

@@ -194,32 +194,23 @@ $vat = $setting->vat;
 
               <li><input type="radio" name="payment" value="ideal"><img src="{{ asset('front/images/mollie.png') }}" style="width: 100px; height: 60px;"> </li>
         </ul>
-        @error('payment')
-        <div class="alert alert-danger" role="alert">
-          {{$message}}
-           </div>
-        @enderror
+                    @error('payment')
+                       <div class="alert alert-danger" role="alert">
+                      {{$message}}
+                       </div>
+                      @enderror
     </div>
-
-
                             <div class="contact_form_button text-center">
-        <button type="submit" class="btn btn-info">Pay Now</button>
+                              <button type="submit" class="btn btn-info">Pay Now</button>
                             </div>
                         </form>
 
                     </div>
                 </div>
-
-
-
-
-
-
-
             </div>
         </div>
         <div class="panel"></div>
-    </div>
+</div>
 
 
 @endsection

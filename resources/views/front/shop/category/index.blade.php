@@ -88,7 +88,7 @@
                                     @else
                                     <div class="product_price">${{ $product->price }}</div>
                                     @endif
-									<div class="product_name"><div><a href="#" tabindex="0">{{ $product->name }}</a></div></div>
+									<div class="product_name"><div><a href="{{ route('front.show.product',[$product->id,$product->name]) }}" tabindex="0">{{ $product->name }}</a></div></div>
 								</div>
 								<div class="product_fav"><i class="fas fa-heart"></i></div>
 								<ul class="product_marks">

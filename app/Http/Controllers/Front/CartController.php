@@ -195,9 +195,9 @@ class CartController extends Controller
         $data['paying_amount'] = $charge->amount;
         $data['balance_transaction'] = $charge->balance_transaction;
         $data['stripe_order_id'] = $charge->id;
-        $data['total'] = $charge->total;
-        $data['shipping'] = $charge->shipping;
-        $data['vat'] = $charge->vat;
+        $data['total'] = $request->total;
+        $data['shipping'] = $request->shipping;
+        $data['vat'] = $request->vat;
         $data['status'] = $charge->status === 'succeeded' ? 1 : 0;
         $data['month'] = date('F');
         $data['date'] = date('d-m-y');
