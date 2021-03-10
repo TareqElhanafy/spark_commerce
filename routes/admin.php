@@ -85,6 +85,24 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function ()
     });
 
     /**
+     *
+     * Orders Routes
+     */
+    Route::group(['prefix'=>'orders'], function(){
+        Route::get('/new-orders', 'OrderController@NewOrders')->name('admin.orders.new');
+        Route::get('/canceled-orders', 'OrderController@CanceledOrders')->name('admin.orders.canceled');
+        Route::get('/accepted-orders', 'OrderController@AcceptedOrders')->name('admin.orders.accepted');
+        Route::get('/progressed-orders', 'OrderController@ProgressedOrders')->name('admin.orders.progressed');
+        Route::get('/delievered-orders', 'OrderController@DelieveredOrders')->name('admin.orders.delievered');
+
+        Route::get('/show/{id}', 'OrderController@show')->name('admin.orders.view');
+        Route::get('/payment-accept/{id}', 'OrderController@AcceptPayment')->name('admin.orders.paymentaccept');
+        Route::get('/cancel/{id}/order', 'OrderController@CancelOrder')->name('admin.orders.cancel');
+        Route::get('/start-order/{id}/delievery', 'OrderController@StartDelievery')->name('admin.orders.startdelievery');
+        Route::get('/delievey/{id}/done', 'OrderController@DelieveryDone')->name('admin.orders.delieverydone');
+
+    });
+    /**
      *Blog Routes
      */
     Route::group(['prefix' => 'blog'], function () {

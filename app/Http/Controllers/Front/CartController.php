@@ -198,7 +198,7 @@ class CartController extends Controller
         $data['total'] = $request->total;
         $data['shipping'] = $request->shipping;
         $data['vat'] = $request->vat;
-        $data['status'] = $charge->status === 'succeeded' ? 1 : 0;
+        $data['status'] = 0;
         $data['month'] = date('F');
         $data['date'] = date('d-m-y');
         $data['year'] = date('Y');

@@ -99,16 +99,31 @@
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
         <a href="" class="sl-menu-link">
-          <div class="sl-menu-item">
-            <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
-            <span class="menu-item-label">Products</span>
-            <i class="menu-item-arrow fa fa-angle-down"></i>
-          </div><!-- menu-item -->
-        </a><!-- sl-menu-link -->
-        <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="{{ route('admin.products.create') }}" class="nav-link">Add Product</a></li>
-          <li class="nav-item"><a href="{{ route('admin.products') }}" class="nav-link">All Products</a></li>
-        </ul>
+            <div class="sl-menu-item">
+              <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+              <span class="menu-item-label">Products</span>
+              <i class="menu-item-arrow fa fa-angle-down"></i>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
+          <ul class="sl-menu-sub nav flex-column">
+            <li class="nav-item"><a href="{{ route('admin.products.create') }}" class="nav-link">Add Product</a></li>
+            <li class="nav-item"><a href="{{ route('admin.products') }}" class="nav-link">All Products</a></li>
+          </ul>
+          <a href="" class="sl-menu-link">
+            <div class="sl-menu-item">
+              <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+              <span class="menu-item-label">Orders</span>
+              <i class="menu-item-arrow fa fa-angle-down"></i>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
+          <ul class="sl-menu-sub nav flex-column">
+            <li class="nav-item"><a href="{{ route('admin.orders.new') }}" class="nav-link">New Orders</a></li>
+            <li class="nav-item"><a href="{{ route('admin.orders.canceled') }}" class="nav-link">Canceled Orders</a></li>
+            <li class="nav-item"><a href="{{ route('admin.orders.accepted') }}" class="nav-link">Payment Accepted Orders</a></li>
+            <li class="nav-item"><a href="{{ route('admin.orders.progressed') }}" class="nav-link">Delievery In progress Orders</a></li>
+            <li class="nav-item"><a href="{{ route('admin.orders.delievered') }}" class="nav-link">Delieverd Orders</a></li>
+
+          </ul>
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
               <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
