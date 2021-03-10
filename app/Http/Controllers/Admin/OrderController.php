@@ -122,4 +122,17 @@ class OrderController extends Controller
             'message' => 'Order Delievery process Done Successfully',
         ]);
     }
+
+    public function track(Request $request)
+    {
+        $track = DB::table('orders')->where('status_code',$request->status_code)->first();
+        if (!$track) {
+            return redirect()->back()->with([
+                'alert-type' => 'error',
+                'message' => 'There is no order with such a status code',
+            ]);
+        }
+
+        return view('front.track', compact('track'));
+    }
 }

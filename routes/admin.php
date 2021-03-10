@@ -72,6 +72,20 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function ()
 
     /**
      *
+     * SEO Routes
+     */
+    Route::group(['prefix'=>'seos'], function(){
+      Route::get('/', 'SeoController@index')->name('admin.seo');
+      Route::post('/add-new', 'SeoController@store')->name('admin.seo.store');
+      Route::get('/edit/{id}', 'SeoController@edit')->name('admin.seo.edit');
+      Route::post('/update/{id}', 'SeoController@update')->name('admin.seo.update');
+      Route::get('/delete/{id}', 'SeoController@destroy')->name('admin.seo.delete');
+
+
+    });
+
+    /**
+     *
      * Products Routes
      */
     Route::group(['prefix' => 'products'], function () {

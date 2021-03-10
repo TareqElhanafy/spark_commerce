@@ -142,6 +142,12 @@
               <span class="menu-item-label">Newsletters</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
+          <a href="{{ route('admin.seo') }}" class="sl-menu-link">
+            <div class="sl-menu-item">
+              <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+              <span class="menu-item-label">SEO</span>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
       </div><!-- sl-sideleft-menu -->
 
       <br>

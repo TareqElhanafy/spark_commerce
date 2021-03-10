@@ -60,9 +60,13 @@
 							</div>
                             @else
                             <div class="top_bar_user">
+								<div><a data-toggle="modal" data-target="#exampleModal" href="">Track My order</a></div>
+							</div>
+                            <div class="top_bar_user">
 								<div class="user_icon"><img src="{{ asset('front/images/user.svg') }}" alt=""></div>
 								<div><a href="{{ route('user.logout') }}">Logout</a></div>
 							</div>
+
                             @endguest
 
 						</div>
@@ -191,7 +195,7 @@
 
 							<div class="main_nav_menu ml-auto">
 								<ul class="standard_dropdown main_nav_dropdown">
-									<li><a href="#">Home<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="{{ route('home') }}">Home<i class="fas fa-chevron-down"></i></a></li>
 									<li class="hassubs">
 										<a href="#">Super Deals<i class="fas fa-chevron-down"></i></a>
 										<ul>
@@ -453,6 +457,32 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	</div>
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Track Your Order</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form action="{{ route('track.order') }}" method="POST">
+                @csrf
+            <input type="text" class="form-control" name="status_code" id="" required>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">submit</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 <script src="{{ asset('front/js/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ asset('front/styles/bootstrap4/popper.js') }}"></script>
 <script src="{{ asset('front/styles/bootstrap4/bootstrap.min.js') }}"></script>
@@ -571,7 +601,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
      });
     });
 </script>
-
+<!--clearing the modal from cached data -->
+<script>
+    $(".modal").on("hidden.bs.modal", function(){
+        $(".modal-body input").val("");
+        });
+    </script>
 </body>
 
 </html>

@@ -23,6 +23,12 @@ Route::post('/add-new', 'Admin\NewsletterController@store')->name('add.newslette
 
 /**
  *
+ * Track orders Route
+ */
+Route::post('/track/order', 'Admin\OrderController@track')->name('track.order');
+
+/**
+ *
  * Wishlist Routes
  */
 Route::group(['prefix' => 'wishlist'], function () {

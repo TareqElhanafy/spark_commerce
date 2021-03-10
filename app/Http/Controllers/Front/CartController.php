@@ -191,7 +191,7 @@ class CartController extends Controller
         $data = [];
         $data['user_id'] = $user_id;
         $data['payment_id'] = $charge->payment_method;
-        $data['payment_type'] = $request->payment;
+        $data['payment_type'] = $request->payment_type;
         $data['paying_amount'] = $charge->amount;
         $data['balance_transaction'] = $charge->balance_transaction;
         $data['stripe_order_id'] = $charge->id;
@@ -199,6 +199,7 @@ class CartController extends Controller
         $data['shipping'] = $request->shipping;
         $data['vat'] = $request->vat;
         $data['status'] = 0;
+        $data['status_code']=mt_rand(100000,999999);
         $data['month'] = date('F');
         $data['date'] = date('d-m-y');
         $data['year'] = date('Y');
