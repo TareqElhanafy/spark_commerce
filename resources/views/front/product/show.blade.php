@@ -111,12 +111,17 @@
                       <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">{!! $product->description  !!}</div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">{{ $product->video_link }}</div>
-                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="fb-comments" data-href="{{ Request::URL() }}" data-width="" data-numposts="5"></div>
+
+                        </div>
                       </div>
 
 				</div>
 			</div>
 		</div>
 	</div>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v10.0" nonce="8o1i2pLt"></script>
 
     @endsection
