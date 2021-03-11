@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddPaymentRequest extends FormRequest
+class AddSettingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,17 @@ class AddPaymentRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
+            'vat' => 'nullable|string|max:255',
+            'shipping_charge' => 'nullable|string|max:255',
+            'shopname' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
             'phone' => 'required|string|max:255',
-            'email' => 'required|email',
             'address' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'payment' => 'required|string',
+            'logo' => 'required_without|mimes:png,jpg,jpeg',
+            'twitter' => 'nullable|string|max:255',
+            'facebook' => 'nullable|string|max:255',
+            'youtube' => 'nullable|string|max:255',
+
         ];
     }
 }

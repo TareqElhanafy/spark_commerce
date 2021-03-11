@@ -24,12 +24,12 @@ class AddPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title_en'=>'required|string|max:255',
-            'title_ar'=>'required|string|max:255',
-            'image'=>'required_without:id|image|mimes:png,jpg,jpeg',
-            'details_en'=>'required|string',
-            'details_ar'=>'required|string',
-            'category_id'=>'required|integer|exists:post_categories,id'
+            'title_en' => 'required|string|max:255',
+            'title_ar' => 'required|string|max:255',
+            'image' => 'required_without:id|image|mimes:png,jpg,jpeg',
+            'details_en' => 'required|string',
+            'details_ar' => 'required|string',
+            'category_id' => 'required|integer|exists:post_categories,id'
         ];
     }
 }

@@ -167,7 +167,18 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function ()
         Route::get('/edit/{id}', 'UserController@edit')->name('admin.users.edit');
         Route::post('/update/{id}', 'UserController@update')->name('admin.users.update');
         Route::get('/delete/{id}', 'UserController@destroy')->name('admin.users.delete');
+    });
 
+    /***
+     *
+     * Site settings Routes
+     */
+    Route::group(['prefix' => 'site-settings'], function () {
+        Route::get('/', 'SettingController@index')->name('admin.settings');
+        Route::post('/add', 'SettingController@store')->name('admin.settings.store');
+        Route::get('/edit/{id}', 'SettingController@edit')->name('admin.settings.edit');
+        Route::post('/update/{id}', 'SettingController@update')->name('admin.settings.update');
+        Route::get('/delete/{id}', 'SettingController@destroy')->name('admin.settings.delete');
     });
 });
 

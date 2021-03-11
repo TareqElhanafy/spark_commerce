@@ -24,7 +24,7 @@ class AddNewsletterRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'=>'string|unique:newsletters,email'
+            'email' => 'string|unique:newsletters,email'
         ];
     }
 }

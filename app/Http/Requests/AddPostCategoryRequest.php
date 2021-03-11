@@ -24,8 +24,8 @@ class AddPostCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_name_en'=>'required|string|max:255',
-            'category_name_ar'=>'required|string|max:255',
+            'category_name_en' => 'required|string|max:255',
+            'category_name_ar' => 'required|string|max:255',
         ];
     }
 }

@@ -26,7 +26,7 @@ class AdminChangePasswordRequest extends FormRequest
         return [
             'old_password' => 'required|string',
             'password' => 'required|min:8|string',
-            'password_confirmation' =>'required',
+            'password_confirmation' => 'required',
         ];
     }
 }

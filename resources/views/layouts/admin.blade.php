@@ -153,6 +153,12 @@
               <span class="menu-item-label">Users</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
+          <a href="{{ route('admin.settings') }}" class="sl-menu-link">
+            <div class="sl-menu-item">
+              <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+              <span class="menu-item-label">Site Settings</span>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
           <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
               <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>

@@ -24,12 +24,12 @@ class AddSeoRequest extends FormRequest
     public function rules()
     {
         return [
-            'meta_title'=>'required|string|max:255',
-            'meta_author'=>'required|string|max:255',
-            'meta_description'=>'required|string|max:255',
-            'meta_tag'=>'required|string|max:255',
-            'google_analytics'=>'required|string|max:255',
-            'bing_analytics'=>'required|string|max:255',
+            'meta_title' => 'required|string|max:255',
+            'meta_author' => 'required|string|max:255',
+            'meta_description' => 'required|string|max:255',
+            'meta_tag' => 'required|string|max:255',
+            'google_analytics' => 'required|string|max:255',
+            'bing_analytics' => 'required|string|max:255',
         ];
     }
 }
