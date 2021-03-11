@@ -74,27 +74,25 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function ()
      *
      * SEO Routes
      */
-    Route::group(['prefix'=>'seos'], function(){
-      Route::get('/', 'SeoController@index')->name('admin.seo');
-      Route::post('/add-new', 'SeoController@store')->name('admin.seo.store');
-      Route::get('/edit/{id}', 'SeoController@edit')->name('admin.seo.edit');
-      Route::post('/update/{id}', 'SeoController@update')->name('admin.seo.update');
-      Route::get('/delete/{id}', 'SeoController@destroy')->name('admin.seo.delete');
+    Route::group(['prefix' => 'seos'], function () {
+        Route::get('/', 'SeoController@index')->name('admin.seo');
+        Route::post('/add-new', 'SeoController@store')->name('admin.seo.store');
+        Route::get('/edit/{id}', 'SeoController@edit')->name('admin.seo.edit');
+        Route::post('/update/{id}', 'SeoController@update')->name('admin.seo.update');
+        Route::get('/delete/{id}', 'SeoController@destroy')->name('admin.seo.delete');
     });
 
     /**
      *
      * Reports Routes
      */
-    Route::group(['prefix'=>'reports'], function(){
+    Route::group(['prefix' => 'reports'], function () {
         Route::get('/today-orders', 'ReportController@TodayOrders')->name('admin.reports.today.orders');
         Route::get('/today-delievery', 'ReportController@TodayDelievery')->name('admin.reports.today.delievery');
         Route::get('/search', 'ReportController@Search')->name('admin.reports.search');
         Route::post('/search-by-date', 'ReportController@SearchByDate')->name('admin.reports.search.by.date');
         Route::post('/search-by-year', 'ReportController@SearchByYear')->name('admin.reports.search.by.year');
         Route::post('/search-by-month', 'ReportController@SearchByMonth')->name('admin.reports.search.by.month');
-
-
     });
 
     /**
@@ -115,7 +113,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function ()
      *
      * Orders Routes
      */
-    Route::group(['prefix'=>'orders'], function(){
+    Route::group(['prefix' => 'orders'], function () {
         Route::get('/new-orders', 'OrderController@NewOrders')->name('admin.orders.new');
         Route::get('/canceled-orders', 'OrderController@CanceledOrders')->name('admin.orders.canceled');
         Route::get('/accepted-orders', 'OrderController@AcceptedOrders')->name('admin.orders.accepted');
@@ -126,7 +124,6 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function ()
         Route::get('/cancel/{id}/order', 'OrderController@CancelOrder')->name('admin.orders.cancel');
         Route::get('/start-order/{id}/delievery', 'OrderController@StartDelievery')->name('admin.orders.startdelievery');
         Route::get('/delievey/{id}/done', 'OrderController@DelieveryDone')->name('admin.orders.delieverydone');
-
     });
 
 
@@ -135,7 +132,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function ()
      */
     Route::group(['prefix' => 'blog'], function () {
 
-     /*
+        /*
      * PostCategory routes
      */
         Route::group(['prefix' => 'post-categories'], function () {
@@ -145,19 +142,31 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function ()
             Route::post('/update/{id}', 'BlogController@update')->name('admin.blog.categories.update');
             Route::get('/delete/{id}', 'BlogController@destroy')->name('admin.blog.categories.delete');
         });
+        /**
+         *
+         * Post Routes
+         */
+
+        Route::group(['prefix' => 'posts'], function () {
+            Route::get('/', 'PostController@index')->name('admin.blog.posts');
+            Route::get('/add-new', 'PostController@create')->name('admin.blog.posts.create');
+            Route::post('/store', 'PostController@store')->name('admin.blog.posts.store');
+            Route::get('/edit/{id}', 'PostController@edit')->name('admin.blog.posts.edit');
+            Route::post('/update/{id}', 'PostController@update')->name('admin.blog.posts.update');
+            Route::get('/delete/{id}', 'PostController@destroy')->name('admin.blog.posts.delete');
+        });
+    });
+
     /**
      *
-     * Post Routes
+     * Users Routes
      */
-
-     Route::group(['prefix'=>'posts'], function(){
-         Route::get('/','PostController@index')->name('admin.blog.posts');
-         Route::get('/add-new', 'PostController@create')->name('admin.blog.posts.create');
-         Route::post('/store', 'PostController@store')->name('admin.blog.posts.store');
-         Route::get('/edit/{id}', 'PostController@edit')->name('admin.blog.posts.edit');
-         Route::post('/update/{id}', 'PostController@update')->name('admin.blog.posts.update');
-         Route::get('/delete/{id}', 'PostController@destroy')->name('admin.blog.posts.delete');
-     });
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/', 'UserController@index')->name('admin.users');
+        Route::post('/add-new', 'UserController@store')->name('admin.users.store');
+        Route::get('/edit/{id}', 'UserController@edit')->name('admin.users.edit');
+        Route::post('/update/{id}', 'UserController@update')->name('admin.users.update');
+        Route::get('/delete/{id}', 'UserController@destroy')->name('admin.users.delete');
 
     });
 });
