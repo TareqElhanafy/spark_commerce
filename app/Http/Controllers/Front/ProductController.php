@@ -29,7 +29,6 @@ class ProductController extends Controller
 
     public function addproducttocart(Request $request, $id)
     {
-        dd($request);
         $product = Product::find($id);
         if (!$product) {
             return redirect()->back()->with([

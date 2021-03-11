@@ -63,7 +63,7 @@ Route::group(['prefix' => 'cart'], function () {
  */
 Route::group(['prefix' => 'products'], function () {
     Route::get('/show/{id}/{name}', 'Front\ProductController@show')->name('front.show.product');
-    Route::get('/add-product/{id}', 'Front\ProductController@addproducttocart')->name('front.product.add');
+    Route::post('/add-product/{id}', 'Front\ProductController@addproducttocart')->name('front.product.add');
     Route::get('/subcategory/{id}/items', 'Front\ProductController@SubcategoryProducts')->name('front.subcategory.products');
     Route::get('/category/{id}/items', 'Front\ProductController@CategoryProducts')->name('front.category.products');
 });

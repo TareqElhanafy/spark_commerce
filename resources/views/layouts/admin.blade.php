@@ -64,7 +64,7 @@
       <div class="sl-sideleft-menu">
         <a href="{{ route('admin.dashboard') }}" class="sl-menu-link active">
           <div class="sl-menu-item">
-            <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
+            <i class="fa fa-tachometer" aria-hidden="true"></i>
             <span class="menu-item-label">Dashboard</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
@@ -76,32 +76,32 @@
           </a><!-- sl-menu-link -->
         <a href="{{ route('admin.categories') }}" class="sl-menu-link">
           <div class="sl-menu-item">
-            <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+            <i class="fa fa-thumb-tack" aria-hidden="true"></i>
             <span class="menu-item-label">Categories</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <a href="{{ route('admin.subcategories') }}" class="sl-menu-link">
             <div class="sl-menu-item">
-              <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-              <span class="menu-item-label">Sub Categories</span>
+                <i class="fa fa-bars" aria-hidden="true"></i>
+                <span class="menu-item-label">Sub Categories</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
           <a href="{{ route('admin.brands') }}" class="sl-menu-link">
             <div class="sl-menu-item">
-              <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-              <span class="menu-item-label">Brands</span>
+                <i class="fa fa-apple" aria-hidden="true"></i>
+                <span class="menu-item-label">Brands</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
           <a href="{{ route('admin.coupons') }}" class="sl-menu-link">
             <div class="sl-menu-item">
-              <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-              <span class="menu-item-label">Coupons</span>
+                <i class="fa fa-money" aria-hidden="true"></i>
+                <span class="menu-item-label">Coupons</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
         <a href="" class="sl-menu-link">
             <div class="sl-menu-item">
-              <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
-              <span class="menu-item-label">Products</span>
+                <i class="fa fa-product-hunt" aria-hidden="true"></i>
+                <span class="menu-item-label">Products</span>
               <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
@@ -111,8 +111,8 @@
           </ul>
           <a href="" class="sl-menu-link">
             <div class="sl-menu-item">
-              <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
-              <span class="menu-item-label">Orders</span>
+                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                <span class="menu-item-label">Orders</span>
               <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
@@ -125,8 +125,8 @@
           </ul>
           <a href="" class="sl-menu-link">
             <div class="sl-menu-item">
-              <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
-              <span class="menu-item-label">Reports</span>
+                <i class="fa fa-file" aria-hidden="true"></i>
+                <span class="menu-item-label">Reports</span>
               <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
@@ -137,8 +137,8 @@
           </ul>
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-              <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
-              <span class="menu-item-label">Blog</span>
+                <i class="fa fa-rss" aria-hidden="true"></i>
+                <span class="menu-item-label">Blog</span>
               <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
@@ -149,14 +149,14 @@
           </ul>
           <a href="{{ route('admin.users') }}" class="sl-menu-link">
             <div class="sl-menu-item">
-              <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-              <span class="menu-item-label">Users</span>
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                <span class="menu-item-label">Users</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
           <a href="{{ route('admin.settings') }}" class="sl-menu-link">
             <div class="sl-menu-item">
-              <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-              <span class="menu-item-label">Site Settings</span>
+                <i class="fa fa-wrench" aria-hidden="true"></i>
+                <span class="menu-item-label">Site Settings</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
           <a href="#" class="sl-menu-link">
@@ -197,14 +197,14 @@
           </ul>
         <a href="{{ route('admin.newsletters') }}" class="sl-menu-link">
             <div class="sl-menu-item">
-              <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-              <span class="menu-item-label">Newsletters</span>
+                <i class="fa fa-envelope-open" aria-hidden="true"></i>
+                <span class="menu-item-label">Newsletters</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
           <a href="{{ route('admin.seo') }}" class="sl-menu-link">
             <div class="sl-menu-item">
-              <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-              <span class="menu-item-label">SEO</span>
+                <i class="fa fa-google" aria-hidden="true"></i>
+                <span class="menu-item-label">SEO</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
       </div><!-- sl-sideleft-menu -->
