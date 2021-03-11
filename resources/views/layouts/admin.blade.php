@@ -122,7 +122,18 @@
             <li class="nav-item"><a href="{{ route('admin.orders.accepted') }}" class="nav-link">Payment Accepted Orders</a></li>
             <li class="nav-item"><a href="{{ route('admin.orders.progressed') }}" class="nav-link">Delievery In progress Orders</a></li>
             <li class="nav-item"><a href="{{ route('admin.orders.delievered') }}" class="nav-link">Delieverd Orders</a></li>
-
+          </ul>
+          <a href="" class="sl-menu-link">
+            <div class="sl-menu-item">
+              <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+              <span class="menu-item-label">Reports</span>
+              <i class="menu-item-arrow fa fa-angle-down"></i>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
+          <ul class="sl-menu-sub nav flex-column">
+            <li class="nav-item"><a href="{{ route('admin.reports.search') }}" class="nav-link"> Search Reports</a></li>
+            <li class="nav-item"><a href="{{ route('admin.reports.today.orders') }}" class="nav-link">Today's Orders</a></li>
+            <li class="nav-item"><a href="{{ route('admin.reports.today.delievery') }}" class="nav-link">Today's delievry</a></li>
           </ul>
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">

@@ -80,6 +80,19 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function ()
       Route::get('/edit/{id}', 'SeoController@edit')->name('admin.seo.edit');
       Route::post('/update/{id}', 'SeoController@update')->name('admin.seo.update');
       Route::get('/delete/{id}', 'SeoController@destroy')->name('admin.seo.delete');
+    });
+
+    /**
+     *
+     * Reports Routes
+     */
+    Route::group(['prefix'=>'reports'], function(){
+        Route::get('/today-orders', 'ReportController@TodayOrders')->name('admin.reports.today.orders');
+        Route::get('/today-delievery', 'ReportController@TodayDelievery')->name('admin.reports.today.delievery');
+        Route::get('/search', 'ReportController@Search')->name('admin.reports.search');
+        Route::post('/search-by-date', 'ReportController@SearchByDate')->name('admin.reports.search.by.date');
+        Route::post('/search-by-year', 'ReportController@SearchByYear')->name('admin.reports.search.by.year');
+        Route::post('/search-by-month', 'ReportController@SearchByMonth')->name('admin.reports.search.by.month');
 
 
     });
@@ -108,7 +121,6 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function ()
         Route::get('/accepted-orders', 'OrderController@AcceptedOrders')->name('admin.orders.accepted');
         Route::get('/progressed-orders', 'OrderController@ProgressedOrders')->name('admin.orders.progressed');
         Route::get('/delievered-orders', 'OrderController@DelieveredOrders')->name('admin.orders.delievered');
-
         Route::get('/show/{id}', 'OrderController@show')->name('admin.orders.view');
         Route::get('/payment-accept/{id}', 'OrderController@AcceptPayment')->name('admin.orders.paymentaccept');
         Route::get('/cancel/{id}/order', 'OrderController@CancelOrder')->name('admin.orders.cancel');
@@ -116,10 +128,13 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function ()
         Route::get('/delievey/{id}/done', 'OrderController@DelieveryDone')->name('admin.orders.delieverydone');
 
     });
+
+
     /**
      *Blog Routes
      */
     Route::group(['prefix' => 'blog'], function () {
+
      /*
      * PostCategory routes
      */
