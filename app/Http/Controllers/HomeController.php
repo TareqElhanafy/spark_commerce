@@ -83,4 +83,13 @@ class HomeController extends Controller
             'message' => 'The order return request has been sent',
         ]);
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $products = Product::where('name', 'LIKE', "%$search%")->paginate(10);
+        $categories = Category::all();
+        $brands = Brand::all();
+        return view('front.product.search', compact('products', 'brands', 'categories'));
+    }
 }

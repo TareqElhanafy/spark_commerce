@@ -44,6 +44,11 @@ Route::get('/make-return-order/{id}', 'HomeController@MakeReturn')->name('return
 
 /**
  *
+ * products Search
+ */
+Route::post('/search', 'HomeController@search')->name('search');
+/**
+ *
  * Wishlist Routes
  */
 Route::group(['prefix' => 'wishlist'], function () {
