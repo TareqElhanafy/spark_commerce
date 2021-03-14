@@ -27,24 +27,24 @@ class ProductController extends Controller
     }
     public function store(AddProductRequest $request)
     {
-        $data=[];
-        $data['name']=$request->name;
-        $data['description']=$request->description;
-        $data['category_id']=$request->category_id;
-        $data['subcategory_id']=$request->subcategory_id;
-        $data['brand_id']=$request->brand_id;
-        $data['quantity']=$request->quantity;
-        $data['price']=$request->price;
-        $data['size']=$request->size;
-        $data['color']=$request->color;
-        $data['discount']=$request->discount;
-        $data['main_slider']=$request->main_slider;
-        $data['mid_slider']=$request->mid_slider;
-        $data['best_rated']=$request->best_rated;
-        $data['trend']=$request->trend;
-        $data['on_sale']=$request->on_sale;
-        $data['get_one']=$request->get_one;
-        $data['hot_deal']=$request->hot_deal;
+        $data = [];
+        $data['name'] = $request->name;
+        $data['description'] = $request->description;
+        $data['category_id'] = $request->category_id;
+        $data['subcategory_id'] = $request->subcategory_id;
+        $data['brand_id'] = $request->brand_id;
+        $data['quantity'] = $request->quantity;
+        $data['price'] = $request->price;
+        $data['size'] = $request->size;
+        $data['color'] = $request->color;
+        $data['discount'] = $request->discount;
+        $data['main_slider'] = $request->main_slider;
+        $data['mid_slider'] = $request->mid_slider;
+        $data['best_rated'] = $request->best_rated;
+        $data['trend'] = $request->trend;
+        $data['on_sale'] = $request->on_sale;
+        $data['get_one'] = $request->get_one;
+        $data['hot_deal'] = $request->hot_deal;
 
         if ($request->has('image_one')) {
             $data['image_one'] = $request->image_one->store('products');
@@ -56,15 +56,15 @@ class ProductController extends Controller
             $data['image_three'] = $request->image_three->store('products');
         }
         if (!$request->has('status')) {
-           $data['status']=0;
+            $data['status'] = 0;
         } else {
-            $data['status']=1;
+            $data['status'] = 1;
         }
-       $product = Product::create($data);
+        $product = Product::create($data);
 
         return redirect()->route('admin.products')->with([
-            'message'=>'New Product added successfully',
-            'alert-type'=>'success',
+            'message' => 'New Product added successfully',
+            'alert-type' => 'success',
         ]);
     }
 
@@ -73,14 +73,14 @@ class ProductController extends Controller
         $product = Product::find($id);
         if (!$product) {
             return redirect()->route('admin.products')->with([
-                'message'=>'There is no Product with such an id',
-                'alert-type'=>'error',
+                'message' => 'There is no Product with such an id',
+                'alert-type' => 'error',
             ]);
         }
         $categories = Category::get();
         $brands = Brand::get();
 
-        return view('admin.product.edit', compact('product', 'categories','brands'));
+        return view('admin.product.edit', compact('product', 'categories', 'brands'));
     }
 
     public function update(AddProductRequest $request, $id)
@@ -88,28 +88,28 @@ class ProductController extends Controller
         $product = Product::find($id);
         if (!$product) {
             return redirect()->route('admin.products')->with([
-                'message'=>'There is no Product with such an id',
-                'alert-type'=>'error',
+                'message' => 'There is no Product with such an id',
+                'alert-type' => 'error',
             ]);
         }
-        $data=[];
-        $data['name']=$request->name;
-        $data['description']=$request->description;
-        $data['category_id']=$request->category_id;
-        $data['subcategory_id']=$request->subcategory_id;
-        $data['brand_id']=$request->brand_id;
-        $data['quantity']=$request->quantity;
-        $data['price']=$request->price;
-        $data['size']=$request->size;
-        $data['color']=$request->color;
-        $data['discount']=$request->discount;
-        $data['main_slider']=$request->main_slider;
-        $data['mid_slider']=$request->mid_slider;
-        $data['best_rated']=$request->best_rated;
-        $data['trend']=$request->trend;
-        $data['on_sale']=$request->on_sale;
-        $data['get_one']=$request->get_one;
-        $data['hot_deal']=$request->hot_deal;
+        $data = [];
+        $data['name'] = $request->name;
+        $data['description'] = $request->description;
+        $data['category_id'] = $request->category_id;
+        $data['subcategory_id'] = $request->subcategory_id;
+        $data['brand_id'] = $request->brand_id;
+        $data['quantity'] = $request->quantity;
+        $data['price'] = $request->price;
+        $data['size'] = $request->size;
+        $data['color'] = $request->color;
+        $data['discount'] = $request->discount;
+        $data['main_slider'] = $request->main_slider;
+        $data['mid_slider'] = $request->mid_slider;
+        $data['best_rated'] = $request->best_rated;
+        $data['trend'] = $request->trend;
+        $data['on_sale'] = $request->on_sale;
+        $data['get_one'] = $request->get_one;
+        $data['hot_deal'] = $request->hot_deal;
         if ($request->has('image_one')) {
             Storage::delete($product->image_one);
             $data['image_one'] = $request->image_one->store('products');
@@ -123,14 +123,14 @@ class ProductController extends Controller
             $data['image_three'] = $request->image_three->store('products');
         }
         if (!$request->has('status')) {
-           $data['status']=0;
+            $data['status'] = 0;
         } else {
-            $data['status']=1;
+            $data['status'] = 1;
         }
         $product->update($data);
         return redirect()->route('admin.products')->with([
-            'message'=>'Product updated successfully',
-            'alert-type'=>'success',
+            'message' => 'Product updated successfully',
+            'alert-type' => 'success',
         ]);
     }
 
@@ -139,18 +139,18 @@ class ProductController extends Controller
         $product = Product::find($id);
         if (!$product) {
             return redirect()->route('admin.products')->with([
-                'message'=>'There is no Product with such an id',
-                'alert-type'=>'error',
+                'message' => 'There is no Product with such an id',
+                'alert-type' => 'error',
             ]);
         }
-            Storage::delete($product->image_one);
-            Storage::delete($product->image_two);
-            Storage::delete($product->image_three);
+        Storage::delete($product->image_one);
+        Storage::delete($product->image_two);
+        Storage::delete($product->image_three);
 
         $product->delete();
         return redirect()->route('admin.products')->with([
-            'message'=>'Product deleted successfully',
-            'alert-type'=>'success',
+            'message' => 'Product deleted successfully',
+            'alert-type' => 'success',
         ]);
     }
 
@@ -159,17 +159,17 @@ class ProductController extends Controller
         $product = Product::find($id);
         if (!$product) {
             return redirect()->route('admin.products')->with([
-                'message'=>'There is no Product with such an id',
-                'alert-type'=>'error',
+                'message' => 'There is no Product with such an id',
+                'alert-type' => 'error',
             ]);
         }
-       $status= $product->status == 1 ? 0 : 1 ;
+        $status = $product->status == 1 ? 0 : 1;
         $product->update([
-            'status'=>$status,
+            'status' => $status,
         ]);
         return redirect()->route('admin.products')->with([
-            'message'=>"Product's status changed successfully",
-            'alert-type'=>'success',
+            'message' => "Product's status changed successfully",
+            'alert-type' => 'success',
         ]);
     }
 }

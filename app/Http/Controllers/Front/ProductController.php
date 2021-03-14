@@ -79,15 +79,14 @@ class ProductController extends Controller
             ]);
         }
 
-        $products = Product::where('subcategory_id',$id)->paginate(5);
+        $products = Product::where('subcategory_id', $id)->paginate(5);
         $categories = Category::get();
         $brands = $subcategory->products()->with('brand')
-        ->get()
-        ->pluck('brand')
-        ->unique('id')
-        ->values();
+            ->get()
+            ->pluck('brand')
+            ->unique('id')
+            ->values();
         return view('front.shop.subcategory.index', compact('products', 'categories', 'brands'));
-
     }
     public function CategoryProducts($id)
     {
@@ -99,14 +98,13 @@ class ProductController extends Controller
             ]);
         }
 
-        $products = Product::where('category_id',$id)->paginate(5);
+        $products = Product::where('category_id', $id)->paginate(5);
         $categories = Category::get();
         $brands = $category->products()->with('brand')
-        ->get()
-        ->pluck('brand')
-        ->unique('id')
-        ->values();
+            ->get()
+            ->pluck('brand')
+            ->unique('id')
+            ->values();
         return view('front.shop.category.index', compact('products', 'categories', 'brands'));
-
     }
 }

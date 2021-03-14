@@ -49,7 +49,7 @@ class PostController extends Controller
             ]);
         }
         $categories = PostCategory::get();
-        return view('admin.blog.post.edit', compact('post','categories'));
+        return view('admin.blog.post.edit', compact('post', 'categories'));
     }
 
     public function update(AddPostRequest $request, $id)

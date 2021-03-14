@@ -199,7 +199,7 @@ class CartController extends Controller
         $data['shipping'] = $request->shipping;
         $data['vat'] = $request->vat;
         $data['status'] = 0;
-        $data['status_code']=mt_rand(100000,999999);
+        $data['status_code'] = mt_rand(100000, 999999);
         $data['month'] = date('F');
         $data['date'] = date('d-m-y');
         $data['year'] = date('Y');

@@ -65,7 +65,7 @@ class OrderController extends Controller
             ]);
         }
 
-       DB::table('orders')->where('id', $id)->update(['status' => 1]);
+        DB::table('orders')->where('id', $id)->update(['status' => 1]);
 
         return redirect()->back()->with([
             'alert-type' => 'success',
@@ -82,7 +82,7 @@ class OrderController extends Controller
                 'message' => 'There is no order with such an id',
             ]);
         }
-       DB::table('orders')->where('id', $id)->update(['status' => 4]);
+        DB::table('orders')->where('id', $id)->update(['status' => 4]);
 
         return redirect()->back()->with([
             'alert-type' => 'success',
@@ -99,7 +99,7 @@ class OrderController extends Controller
                 'message' => 'There is no order with such an id',
             ]);
         }
-         DB::table('orders')->where('id', $id)->update(['status' => 2]);
+        DB::table('orders')->where('id', $id)->update(['status' => 2]);
 
         return redirect()->back()->with([
             'alert-type' => 'success',
@@ -108,6 +108,12 @@ class OrderController extends Controller
     }
     public function DelieveryDone($id)
     {
+        $products = DB::table('orders_details')->where('order_id', $id)->get();
+        foreach ($products as $product) {
+            DB::table('products')->where('id', $product->product_id)->update([
+                'quantity' => DB::raw('quantity-'.$product->quantity)
+            ]);
+        }
         $order = DB::table('orders')->where('id', $id)->first();
         if (!$order) {
             return redirect()->back()->with([
@@ -125,7 +131,7 @@ class OrderController extends Controller
 
     public function track(Request $request)
     {
-        $track = DB::table('orders')->where('status_code',$request->status_code)->first();
+        $track = DB::table('orders')->where('status_code', $request->status_code)->first();
         if (!$track) {
             return redirect()->back()->with([
                 'alert-type' => 'error',

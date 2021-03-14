@@ -80,9 +80,10 @@ class SeoController extends Controller
             ]);
         }
 
-        DB::table('seos')->where('id',$id)->delete();
-         return redirect()->route('admin.seo')->with([
+        DB::table('seos')->where('id', $id)->delete();
+        return redirect()->route('admin.seo')->with([
             'alert-type' => 'success',
             'message' => 'Seo deleted successfully'
-        ]);    }
+        ]);
+    }
 }

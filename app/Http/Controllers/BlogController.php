@@ -23,6 +23,6 @@ class BlogController extends Controller
             ]);
         }
         $posts = Post::get();
-        return view('front.blog.show', compact('post','posts'));
+        return view('front.blog.show', compact('post', 'posts'));
     }
 }
