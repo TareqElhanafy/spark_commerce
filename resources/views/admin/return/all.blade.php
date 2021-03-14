@@ -10,11 +10,11 @@
 
       <div class="sl-pagebody">
         <div class="sl-page-title">
-          <h5> Orders Table</h5>
+          <h5> All return orders requests Table</h5>
         </div><!-- sl-page-title -->
 
         <div class="card pd-20 pd-sm-40">
-          <h6 class="card-body-title">New orders List
+          <h6 class="card-body-title">All return orders requests List
           </h6>
           <div class="table-wrapper">
             <table id="datatable1" class="table display responsive nowrap">
@@ -44,22 +44,16 @@
                   <td>{{ $order->shipping }}</td>
                   <td>{{ $order->date }}</td>
                   <td>
-                    @if($order->status == 0)
-                    <span class="badge badge-warning">Pending</span>
-                    @elseif($order->status == 1)
-                    <span class="badge badge-info">Payment Accepted</span>
-                   @elseif($order->status == 2)
-                   <span class="badge badge-warning">Delievery in Progress</span>
-                   @elseif($order->status == 3)
-                   <span class="badge badge-success">Delevered</span>
-                   @else
-                   <span class="badge badge-danger">Cancled</span>
-
+                    @if($order->return_order == 0)
+                    <span class="badge badge-warning">No Request</span>
+                    @elseif($order->return_order == 1)
+                    <span class="badge badge-info">Pending</span>
+                      @elseif($order->return_order == 2)
+                      <span class="badge badge-warning">Successfull Returned</span>
                     @endif
                 </td>
 
                   <td>
-                      <a class="btn btn-sm btn-warning" href="{{ route('admin.orders.view', $order->id) }}">View</a>
                   </td>
                 </tr>
                 @endforeach

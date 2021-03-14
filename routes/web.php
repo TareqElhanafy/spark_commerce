@@ -29,6 +29,13 @@ Route::post('/track/order', 'Admin\OrderController@track')->name('track.order');
 
 /**
  *
+ * Return orders
+ */
+Route::get('/return-orders', 'HomeController@return')->name('front.return');
+Route::get('/make-return-order/{id}', 'HomeController@MakeReturn')->name('return.order.make');
+
+/**
+ *
  * Wishlist Routes
  */
 Route::group(['prefix' => 'wishlist'], function () {

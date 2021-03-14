@@ -44,7 +44,7 @@
    </div><br>
 
  @if($track->status == 0)
- <h4>Note : Your Order are Under Review  </h4>
+ <h4>Note : Your Order is Under Review  </h4>
 
  @elseif($track->status == 1)
   <h4>Note : Payment Accept Under Process  </h4>

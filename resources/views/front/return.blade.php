@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('front/styles/cart_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('front/styles/cart_responsive.css') }}">
 @php
-$order = DB::table('orders')->where('user_id',Auth::id())->orderBy('id','DESC')->limit(10)->get();
+$order = DB::table('orders')->where('user_id',Auth::id())->where('status',3)->orderBy('id','DESC')->limit(10)->get();
 @endphp
 
 <div class="contact_form">
@@ -33,23 +33,28 @@ $order = DB::table('orders')->where('user_id',Auth::id())->orderBy('id','DESC')-
               <td scope="col">{{ $row->date }} </td>
 
                <td scope="col">
-          @if($row->status == 0)
-          <span class="badge badge-warning">Pending</span>
-          @elseif($row->status == 1)
-          <span class="badge badge-info">Payment Accepted</span>
-            @elseif($row->status == 2)
-            <span class="badge badge-warning">Progress</span>
-            @elseif($row->status == 3)
-            <span class="badge badge-success">Delevered</span>
-            @else
-            <span class="badge badge-danger">Cancled</span>
-
+          @if($row->return_order == 0)
+          <span class="badge badge-warning">No Request</span>
+          @elseif($row->return_order == 1)
+          <span class="badge badge-info">Pending</span>
+            @elseif($row->return_order == 2)
+            <span class="badge badge-warning">Successfull Returned</span>
           @endif
 
                 </td>
 
               <td scope="col">{{ $row->status_code }}  </td>
               <td scope="col">
+                @if($row->return_order == 0)
+                <a class="btn btn-sm btn-danger" href="{{ route('return.order.make',$row->id) }}">
+                    Return
+                </a>
+                @elseif($row->return_order == 1)
+                <span class="badge badge-info">Pending</span>
+                  @elseif($row->return_order == 2)
+                  <span class="badge badge-warning">Successfull</span>
+                @endif
+
                </td>
             </tr>
              @endforeach

@@ -128,6 +128,16 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function ()
 
 
     /**
+     *
+     * ReturnOrders Routes
+     */
+    Route::group(['prefix'=>'return-orders'], function(){
+       Route::get('/', 'ReturnController@requests')->name('admin.return.request');
+       Route::get('/approve/{id}', 'ReturnController@ReturnApprove')->name('admin.return.approve');
+       Route::get('/all', 'ReturnController@All')->name('admin.return.orders');
+    });
+
+    /**
      *Blog Routes
      */
     Route::group(['prefix' => 'blog'], function () {

@@ -65,7 +65,7 @@ class OrderController extends Controller
             ]);
         }
 
-        $order = DB::table('orders')->where('id', $id)->update(['status' => 1]);
+       DB::table('orders')->where('id', $id)->update(['status' => 1]);
 
         return redirect()->back()->with([
             'alert-type' => 'success',
@@ -82,7 +82,7 @@ class OrderController extends Controller
                 'message' => 'There is no order with such an id',
             ]);
         }
-        $order = DB::table('orders')->where('id', $id)->update(['status' => 4]);
+       DB::table('orders')->where('id', $id)->update(['status' => 4]);
 
         return redirect()->back()->with([
             'alert-type' => 'success',
@@ -99,7 +99,7 @@ class OrderController extends Controller
                 'message' => 'There is no order with such an id',
             ]);
         }
-        $order = DB::table('orders')->where('id', $id)->update(['status' => 2]);
+         DB::table('orders')->where('id', $id)->update(['status' => 2]);
 
         return redirect()->back()->with([
             'alert-type' => 'success',
@@ -115,7 +115,7 @@ class OrderController extends Controller
                 'message' => 'There is no order with such an id',
             ]);
         }
-        $order = DB::table('orders')->where('id', $id)->update(['status' => 3]);
+        DB::table('orders')->where('id', $id)->update(['status' => 3]);
 
         return redirect()->back()->with([
             'alert-type' => 'success',
