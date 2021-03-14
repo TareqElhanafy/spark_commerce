@@ -43,44 +43,5 @@
         </div><!-- card -->
 
 
-      <!-- model for Adding new category -->
-        <!-- LARGE MODAL -->
-        {{-- <form action="{{ route('admin.coupons.store') }}" class="prevent-multiple-submits form" method="POST">
-            @csrf
-         <div id="modaldemo3" class="modal fade">
-            <div class="modal-dialog modal-lg" role="document">
-              <div class="modal-content tx-size-sm">
-                <div class="modal-header pd-x-20">
-                  <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Add New</h6>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body pd-20">
-                    <label for="name">Coupon Code</label>
-                  <input type="text" class="form-control" name="code" id="">
-                  @error('code')
-                  <div class="alert alert-danger" role="alert">
-                    {{$message}}
-                     </div>
-                  @enderror
-                  <label for="discount">Coupon Discount</label>
-                  <input type="number" class="form-control" name="discount" id="">
-                  @error('discount')
-                  <div class="alert alert-danger" role="alert">
-                    {{$message}}
-                     </div>
-                  @enderror
-                </div><!-- modal-body -->
-                <div class="modal-footer">
-                  <button type="submit" class="btn btn-info pd-x-20 button-prevent-multiple-submits">
-                      <i class="spinner fa fa-spinner fa-spin"></i>
-                    Save</button>
-                  <button type="button" class="btn btn-secondary pd-x-20" id="close" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div><!-- modal-dialog -->
-          </div><!-- modal -->
-        </form> --}}
 @endsection
 

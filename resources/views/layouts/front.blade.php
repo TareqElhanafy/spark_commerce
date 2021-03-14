@@ -200,7 +200,7 @@
 								<ul class="standard_dropdown main_nav_dropdown">
 									<li><a href="{{ route('home') }}">Home<i class="fas fa-chevron-down"></i></a></li>
 									<li><a href="{{ route('blog') }}">Blog<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="{{ route('contact') }}">Contact<i class="fas fa-chevron-down"></i></a></li>
 								</ul>
 							</div>
 
@@ -450,7 +450,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{{ asset('front/js/blog_custom.js') }}"></script>
 <script src="{{ asset('front/js/blog_single_custom.js') }}"></script>
 <script src="{{ asset('front/js/shop_custom.js') }}"></script>
-
+@yield('scripts')
    <!-- toastr -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
    <!--  toaster -->

@@ -27,6 +27,14 @@ Route::post('/add-new', 'Admin\NewsletterController@store')->name('add.newslette
  */
 Route::post('/track/order', 'Admin\OrderController@track')->name('track.order');
 
+/***
+ * Contact Routes
+ */
+Route::group(['prefix'=>'contact'], function(){
+Route::get('/','Admin\ContactController@GetForm')->name('contact');
+Route::post('/submit', 'Admin\ContactController@SubmitForm')->name('front.submit.contact');
+});
+
 /**
  *
  * Return orders

@@ -141,6 +141,10 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function ()
     *Stock Route
     */
     Route::get('/stock', 'StockController@index')->name('admin.stock');
+    /**
+     * Contact Messages
+     */
+    Route::get('/contact-messages', 'ContactController@index')->name('admin.messages');
 
     /**
      *Blog Routes

@@ -189,9 +189,9 @@
 @elseif($order->status == 2)
 <a href="{{ route('admin.orders.delieverydone', $order->id) }}" class="btn btn-success">Delievery Done </a>
 @elseif($order->status == 3)
-<strong class="text-success text-center">This product are successfuly Delieverd  </strong>
+<strong class="text-success text-center">This product is successfuly Delieverd  </strong>
 @else
-<strong class="text-danger text-center"> This order are not valid  </strong>
+<strong class="text-danger text-center"> This order is not valid  </strong>
 @endif
 
 
