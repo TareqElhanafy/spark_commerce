@@ -108,6 +108,8 @@ Route::group(['prefix' => 'blog'], function () {
 });
 
 Auth::routes();
+Route::get('/auth/redirect/{provider}', 'GoogleLoginController@redirect')->name('google');
+Route::get('/callback/{provider}', 'GoogleLoginController@callback');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@home')->name('home');
     Route::get('/user/logout', 'HomeController@logout')->name('user.logout');

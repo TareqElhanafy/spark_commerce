@@ -90,7 +90,9 @@
 							<div class="logo"><a href="{{ route('frontpage') }}">SparK</a></div>
 						</div>
 					</div>
-
+                 @php
+                    $categories = App\Category::get();
+                @endphp
 					<!-- Search -->
 					<div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
 						<div class="header_search">
@@ -104,10 +106,7 @@
 												<span class="custom_dropdown_placeholder clc">All Categories</span>
 												<i class="fas fa-chevron-down"></i>
 												<ul class="custom_list clc">
-													<li><a class="clc" href="{{ route('frontpage') }}">All Categories</a></li>
-                                                    @php
-                                                        $categories = App\Category::get();
-                                                    @endphp
+
                                                     @foreach ($categories  as $category)
 													<li><a class="clc" href="{{ route('frontpage') }}">{{ $category->name }}</a></li>
                                                     @endforeach

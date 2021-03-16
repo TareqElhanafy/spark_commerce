@@ -20,8 +20,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories  = Category::get();
-        $brands  = Brand::get();
+        $categories  = Category::all();
+        $brands  = Brand::all();
         $first_product = Product::status()->first();
         $products = Product::status()->limit(16)->orderBy('id', 'desc')->get();
         $on_sales = Product::status()->where('on_sale', 1)->limit(4)->get();
