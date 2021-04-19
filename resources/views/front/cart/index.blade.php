@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="cart_buttons">
-                        <a type="button" class="button cart_button_clear">Clear Your Cart</a>
+                        <a href="{{ route('cart.clear') }}" class="button cart_button_clear">Clear Your Cart</a>
                         <a href="{{ route('checkout') }}" class="button cart_button_checkout">CheckOut</a>
                     </div>
                 </div>

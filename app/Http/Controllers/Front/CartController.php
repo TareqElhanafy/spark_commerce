@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
+
+    //Add product to cart from the front page and from the product page
     public function add($id)
     {
         if (!Auth::check()) {
@@ -68,12 +70,14 @@ class CartController extends Controller
         return \Cart::Content();
     }
 
+    //get the cart page
     public function show()
     {
         $content = \Cart::content();
         return view('front.cart.index', compact('content'));
     }
 
+    //update the cart items quantity
     public function updateqty(Request $request, $rowId)
     {
         \Cart::update($rowId, ['qty' => $request->qty]); // Will update the name
@@ -83,15 +87,23 @@ class CartController extends Controller
         ]);
     }
 
+    //Remove item from the cart
     public function destroy($rowId)
     {
         \Cart::remove($rowId);
-        return redirect()->back()->with([
+        if (\Cart::content()->count() > 0) {
+            return redirect()->back()->with([
+                'message' => 'This product item deleted succeessfully',
+                'alert-type' => 'success',
+            ]);
+        }
+        return redirect()->route('cart')->with([
             'message' => 'This product item deleted succeessfully',
             'alert-type' => 'success',
         ]);
     }
 
+    //get the checkout page
     public function checkout()
     {
         if (!Auth::check()) {
@@ -105,6 +117,7 @@ class CartController extends Controller
         }
     }
 
+    //Apply coupons
     public function coupon(ApplyCouponRequest $request)
     {
         $check = Coupon::where('code', $request->coupon)->first();
@@ -135,6 +148,7 @@ class CartController extends Controller
         ]);
     }
 
+    //get the payment view
     public function payment()
     {
         if (!Auth::check()) {
@@ -148,6 +162,7 @@ class CartController extends Controller
         }
     }
 
+    //detect the payment method
     public function DoPayment(AddPaymentRequest $request)
     {
         $data = [];
@@ -172,6 +187,7 @@ class CartController extends Controller
         }
     }
 
+    //do stripe payment
     public function StripeCharge(Request $request)
     {
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
@@ -244,6 +260,16 @@ class CartController extends Controller
         return redirect()->route('frontpage')->with([
             'alert-type' => 'success',
             'message' => 'Order Process Successfully Done'
+        ]);
+    }
+
+    // cart clear
+    public function clear()
+    {
+        \Cart::destroy();
+        return redirect()->route('cart')->with([
+            'alert-type' => 'success',
+            'message' => 'You cleared your cart successfully '
         ]);
     }
 }
