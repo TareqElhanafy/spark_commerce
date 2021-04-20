@@ -83,11 +83,6 @@
                   @enderror
                   <label for="name">User Confirm Password</label>
                   <input type="password" class="form-control" name="password_confirmation" id=" ">
-                  @error('password_confirmation')
-                  <div class="alert alert-danger" role="alert">
-                    {{$message}}
-                     </div>
-                  @enderror
                 </div><!-- modal-body -->
                 <div class="modal-footer">
                   <button type="submit" class="btn btn-info pd-x-20 button-prevent-multiple-submits">

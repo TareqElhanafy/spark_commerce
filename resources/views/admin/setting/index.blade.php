@@ -3,8 +3,8 @@
     <!-- ########## START: MAIN PANEL ########## -->
     <div class="sl-mainpanel">
       <nav class="breadcrumb sl-breadcrumb">
-        <a class="breadcrumb-item" href="index.html">Starlight</a>
-        <a class="breadcrumb-item" href="index.html">Settings</a>
+        <a class="breadcrumb-item" href="{{ route('admin.dashboard') }}">Dashboard</a>
+        <a class="breadcrumb-item" href="">Settings</a>
       </nav>
 
       <div class="sl-pagebody">

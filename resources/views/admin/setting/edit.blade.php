@@ -4,8 +4,8 @@
     <!-- ########## START: MAIN PANEL ########## -->
     <div class="sl-mainpanel">
         <nav class="breadcrumb sl-breadcrumb">
-          <a class="breadcrumb-item" href="index.html">Starlight</a>
-          <a class="breadcrumb-item" href="index.html">Setting</a>
+            <a class="breadcrumb-item" href="{{ route('admin.dashboard') }}">Dashboard</a>
+            <a class="breadcrumb-item" href="">Setting</a>
           <span class="breadcrumb-item active">edit</span>
         </nav>
 

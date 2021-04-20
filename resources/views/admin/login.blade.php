@@ -47,8 +47,8 @@
     <div class="d-flex align-items-center justify-content-center bg-sl-primary ht-100v">
 
       <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white">
-        <div class="signin-logo tx-center tx-24 tx-bold tx-inverse">starlight <span class="tx-info tx-normal">admin</span></div>
-        <div class="tx-center mg-b-60">Professional Admin Template Design</div>
+        <div class="signin-logo tx-center tx-24 tx-bold tx-inverse">Admin <span class="tx-info tx-normal">Login</span></div>
+        <div class="tx-center mg-b-60">Admin Access</div>
 <form action="{{ route('admin.post.login') }}" method="POST">
 @csrf
         <div class="form-group">
@@ -67,12 +67,9 @@
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
-          <a href="" class="tx-info tx-12 d-block mg-t-10">Forgot password?</a>
         </div><!-- form-group -->
         <button type="submit" class="btn btn-info btn-block">Sign In</button>
     </form>
-
-        <div class="mg-t-60 tx-center">Not yet a member? <a href="page-signup.html" class="tx-info">Sign Up</a></div>
       </div><!-- login-wrapper -->
     </div><!-- d-flex -->
 
