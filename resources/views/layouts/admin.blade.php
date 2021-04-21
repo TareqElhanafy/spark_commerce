@@ -222,8 +222,8 @@
           </div><!-- dropdown -->
         </nav>
         <div class="navicon-right">
-          <a id="btnRightMenu" href="" class="pos-relative">
-            <i class="icon ion-ios-bell-outline"></i>
+          <a id="btnRightMenu" href="" class="pos-relative notifi-link">
+            <i class="icon ion-ios-bell-outline notifi-icon-number" data-count="0"></i>
             <!-- start: if statement -->
             <span class="square-8 bg-danger"></span>
             <!-- end: if statement -->
@@ -237,152 +237,24 @@
     <div class="sl-sideright">
       <ul class="nav nav-tabs nav-fill sidebar-tabs" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" role="tab" href="#messages">Messages (2)</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" role="tab" href="#notifications">Notifications (8)</a>
+          <a class="nav-link notf" data-toggle="tab"  role="tab" href="#notifications">Notifications <span class="notifi-count" data-count="0">(0)</span> </a>
         </li>
       </ul><!-- sidebar-tabs -->
 
       <!-- Tab panes -->
       <div class="tab-content">
-        <div class="tab-pane pos-absolute a-0 mg-t-60 active" id="messages" role="tabpanel">
-          <div class="media-list">
-            <!-- loop starts here -->
-            <a href="" class="media-list-link">
-              <div class="media">
-                <img src="{{ asset('board/img/img3.jpg') }}" class="wd-40 rounded-circle" alt="">
-                <div class="media-body">
-                  <p class="mg-b-0 tx-medium tx-gray-800 tx-13">Donna Seay</p>
-                  <span class="d-block tx-11 tx-gray-500">2 minutes ago</span>
-                  <p class="tx-13 mg-t-10 mg-b-0">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring.</p>
-                </div>
-              </div><!-- media -->
-            </a>
-            <!-- loop ends here -->
-            <a href="" class="media-list-link">
-              <div class="media">
-                <img src="{{ asset('board/img/img4.jpg') }}" class="wd-40 rounded-circle" alt="">
-                <div class="media-body">
-                  <p class="mg-b-0 tx-medium tx-gray-800 tx-13">Samantha Francis</p>
-                  <span class="d-block tx-11 tx-gray-500">3 hours ago</span>
-                  <p class="tx-13 mg-t-10 mg-b-0">My entire soul, like these sweet mornings of spring.</p>
-                </div>
-              </div><!-- media -->
-            </a>
-            <a href="" class="media-list-link">
-              <div class="media">
-                <img src="{{ asset('board/img/img7.jpg') }}" class="wd-40 rounded-circle" alt="">
-                <div class="media-body">
-                  <p class="mg-b-0 tx-medium tx-gray-800 tx-13">Robert Walker</p>
-                  <span class="d-block tx-11 tx-gray-500">5 hours ago</span>
-                  <p class="tx-13 mg-t-10 mg-b-0">I should be incapable of drawing a single stroke at the present moment...</p>
-                </div>
-              </div><!-- media -->
-            </a>
-            <a href="" class="media-list-link">
-              <div class="media">
-                <img src="{{ asset('board/img/img5.jpg') }}" class="wd-40 rounded-circle" alt="">
-                <div class="media-body">
-                  <p class="mg-b-0 tx-medium tx-gray-800 tx-13">Larry Smith</p>
-                  <span class="d-block tx-11 tx-gray-500">Yesterday, 8:34pm</span>
-
-                  <p class="tx-13 mg-t-10 mg-b-0">When, while the lovely valley teems with vapour around me, and the meridian sun strikes...</p>
-                </div>
-              </div><!-- media -->
-            </a>
-            <a href="" class="media-list-link">
-              <div class="media">
-                <img src="{{ asset('board/img/img3.jpg') }}" class="wd-40 rounded-circle" alt="">
-                <div class="media-body">
-                  <p class="mg-b-0 tx-medium tx-gray-800 tx-13">Donna Seay</p>
-                  <span class="d-block tx-11 tx-gray-500">Jan 23, 2:32am</span>
-                  <p class="tx-13 mg-t-10 mg-b-0">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring.</p>
-                </div>
-              </div><!-- media -->
-            </a>
-          </div><!-- media-list -->
-          <div class="pd-15">
-            <a href="" class="btn btn-secondary btn-block bd-0 rounded-0 tx-10 tx-uppercase tx-mont tx-medium tx-spacing-2">View More Messages</a>
-          </div>
-        </div><!-- #messages -->
-
         <div class="tab-pane pos-absolute a-0 mg-t-60 overflow-y-auto" id="notifications" role="tabpanel">
-          <div class="media-list">
-            <!-- loop starts here -->
+          <div class="media-list notifi-block">
+
             <a href="" class="media-list-link read">
-              <div class="media pd-x-20 pd-y-15">
-                <img src="{{ asset('board/img/img8.jpg') }}" class="wd-40 rounded-circle" alt="">
-                <div class="media-body">
-                  <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">Suzzeth Bungaos</strong> tagged you and 18 others in a post.</p>
-                  <span class="tx-12">October 03, 2017 8:45am</span>
-                </div>
-              </div><!-- media -->
-            </a>
-            <!-- loop ends here -->
-            <a href="" class="media-list-link read">
-              <div class="media pd-x-20 pd-y-15">
-                <img src="{{ asset('board/img/img9.jpg') }}" class="wd-40 rounded-circle" alt="">
-                <div class="media-body">
-                  <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">Mellisa Brown</strong> appreciated your work <strong class="tx-medium tx-gray-800">The Social Network</strong></p>
-                  <span class="tx-12">October 02, 2017 12:44am</span>
-                </div>
-              </div><!-- media -->
-            </a>
-            <a href="" class="media-list-link read">
-              <div class="media pd-x-20 pd-y-15">
-                <img src="{{ asset('board/img/img10.jpg') }}" class="wd-40 rounded-circle" alt="">
-                <div class="media-body">
-                  <p class="tx-13 mg-b-0 tx-gray-700">20+ new items added are for sale in your <strong class="tx-medium tx-gray-800">Sale Group</strong></p>
-                  <span class="tx-12">October 01, 2017 10:20pm</span>
-                </div>
-              </div><!-- media -->
-            </a>
-            <a href="" class="media-list-link read">
-              <div class="media pd-x-20 pd-y-15">
-                <img src="{{ asset('board/img/img5.jpg') }}" class="wd-40 rounded-circle" alt="">
-                <div class="media-body">
-                  <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">Julius Erving</strong> wants to connect with you on your conversation with <strong class="tx-medium tx-gray-800">Ronnie Mara</strong></p>
-                  <span class="tx-12">October 01, 2017 6:08pm</span>
-                </div>
-              </div><!-- media -->
-            </a>
-            <a href="" class="media-list-link read">
-              <div class="media pd-x-20 pd-y-15">
-                <img src="{{ asset('board/img/img8.jpg') }}" class="wd-40 rounded-circle" alt="">
-                <div class="media-body">
-                  <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">Suzzeth Bungaos</strong> tagged you and 12 others in a post.</p>
-                  <span class="tx-12">September 27, 2017 6:45am</span>
-                </div>
-              </div><!-- media -->
-            </a>
-            <a href="" class="media-list-link read">
-              <div class="media pd-x-20 pd-y-15">
-                <img src="{{ asset('board/img/img10.jpg') }}" class="wd-40 rounded-circle" alt="">
-                <div class="media-body">
-                  <p class="tx-13 mg-b-0 tx-gray-700">10+ new items added are for sale in your <strong class="tx-medium tx-gray-800">Sale Group</strong></p>
-                  <span class="tx-12">September 28, 2017 11:30pm</span>
-                </div>
-              </div><!-- media -->
-            </a>
-            <a href="" class="media-list-link read">
-              <div class="media pd-x-20 pd-y-15">
-                <img src="{{ asset('board/img/img9.jpg') }}" class="wd-40 rounded-circle" alt="">
-                <div class="media-body">
-                  <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">Mellisa Brown</strong> appreciated your work <strong class="tx-medium tx-gray-800">The Great Pyramid</strong></p>
-                  <span class="tx-12">September 26, 2017 11:01am</span>
-                </div>
-              </div><!-- media -->
-            </a>
-            <a href="" class="media-list-link read">
-              <div class="media pd-x-20 pd-y-15">
-                <img src="{{ asset('board/img/img5.jpg') }}" class="wd-40 rounded-circle" alt="">
-                <div class="media-body">
-                  <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">Julius Erving</strong> wants to connect with you on your conversation with <strong class="tx-medium tx-gray-800">Ronnie Mara</strong></p>
-                  <span class="tx-12">September 23, 2017 9:19pm</span>
-                </div>
-              </div><!-- media -->
-            </a>
+                <div class="media pd-x-20 pd-y-15">
+                  <img src="{{ asset('board/img/img8.jpg') }}" class="wd-40 rounded-circle" alt="">
+                  <div class="media-body">
+                    <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">testing</strong> tagged you and 18 others in a post.</p>
+                    <span class="tx-12">=`</span>
+                  </div>
+                </div><!-- media -->
+              </a>
           </div><!-- media-list -->
         </div><!-- #notifications -->
 
@@ -532,9 +404,44 @@
 <!--clearing the modal from cached data -->
           <script>
           $(".modal").on("hidden.bs.modal", function(){
-              $(".modal-body input").val("");
+               $(".modal-body input").val("");
               });
           </script>
+              <!-- pusher -->
+              <a id="btnRightMenu" href="" class="pos-relative notifi-link">
+                <i class="icon ion-ios-bell-outline notifi-icon-number" data-count="0"></i>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script>
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('b5b73e7ac46c4cd37215', {
+          cluster: 'eu'
+        });
+        var channel = pusher.subscribe('new-notification');
+        channel.bind('App\\Events\\NewPurchase', function(data) {
+            var newNotification= `<a href="" class="media-list-link read">
+              <div class="media pd-x-20 pd-y-15">
+                <img src="{{ asset('board/img/img8.jpg') }}" class="wd-40 rounded-circle" alt="">
+                <div class="media-body">
+                  <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">testing</strong> tagged you and 18 others in a post.</p>
+                  <span class="tx-12">`+data.name+`</span>
+                </div>
+              </div><!-- media -->
+            </a>`
+         var notificationsBlock= $('.notifi-block')
+         var notificationLink = $('.notifi-link')
+         var notificationIconNumber = notificationLink.find('i[data-count]')
+         var notificationsBellCount = parseInt(notificationIconNumber.data('count'));
+         var existingNotifications = notificationsBlock.html()
+         var notificationsCount = $('.notifi-count')
+         console.log(notificationsBellCount);
+            notificationsBellCount +=1
+            notificationIconNumber.attr('data-count', notificationsBellCount)
+            notificationsCount.text(notificationsBellCount)
+            notificationsBlock.html(newNotification + existingNotifications )
+        });
+      </script>
 
   </body>
 </html>

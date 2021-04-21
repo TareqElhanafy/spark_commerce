@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Coupon;
+use App\Events\NewPurchase;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddPaymentRequest;
 use App\Http\Requests\ApplyCouponRequest;
@@ -250,12 +251,14 @@ class CartController extends Controller
             $details['total_price'] = $row->qty * $row->price;
 
             DB::table('orders_details')->insert($details);
+            //sent real time notification to admin with new purchases
+            event(new NewPurchase($details));
         }
-
         \Cart::destroy();
         if (Session::has('coupon')) {
             Session::forget('coupon');
         }
+
 
         return redirect()->route('frontpage')->with([
             'alert-type' => 'success',

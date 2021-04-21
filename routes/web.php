@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\NewPurchase;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('test', function () {
+    event(new NewPurchase('fdfddf'));
+    return "Event has been sent!";
+});
 Route::get('/', 'HomeController@index')->name('frontpage');
 
 /**
