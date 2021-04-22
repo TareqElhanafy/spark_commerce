@@ -245,16 +245,6 @@
       <div class="tab-content">
         <div class="tab-pane pos-absolute a-0 mg-t-60 overflow-y-auto" id="notifications" role="tabpanel">
           <div class="media-list notifi-block">
-
-            <a href="" class="media-list-link read">
-                <div class="media pd-x-20 pd-y-15">
-                  <img src="{{ asset('board/img/img8.jpg') }}" class="wd-40 rounded-circle" alt="">
-                  <div class="media-body">
-                    <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">testing</strong> tagged you and 18 others in a post.</p>
-                    <span class="tx-12">=`</span>
-                  </div>
-                </div><!-- media -->
-              </a>
           </div><!-- media-list -->
         </div><!-- #notifications -->
 
@@ -420,12 +410,11 @@
         });
         var channel = pusher.subscribe('new-notification');
         channel.bind('App\\Events\\NewPurchase', function(data) {
-            var newNotification= `<a href="" class="media-list-link read">
+            var newNotification= `<a href="{{ URL('admin/orders/show/`+data.order_id+`') }}" class="media-list-link read">
               <div class="media pd-x-20 pd-y-15">
-                <img src="{{ asset('board/img/img8.jpg') }}" class="wd-40 rounded-circle" alt="">
                 <div class="media-body">
-                  <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">testing</strong> tagged you and 18 others in a post.</p>
-                  <span class="tx-12">`+data.name+`</span>
+                  <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">New Order!</strong> `+data.product_name+` is purchased, Check it Out.</p>
+                  <span class="tx-12"></span>
                 </div>
               </div><!-- media -->
             </a>`
@@ -435,13 +424,12 @@
          var notificationsBellCount = parseInt(notificationIconNumber.data('count'));
          var existingNotifications = notificationsBlock.html()
          var notificationsCount = $('.notifi-count')
-         console.log(notificationsBellCount);
             notificationsBellCount +=1
             notificationIconNumber.attr('data-count', notificationsBellCount)
             notificationsCount.text(notificationsBellCount)
             notificationsBlock.html(newNotification + existingNotifications )
         });
-      </script>
+    </script>
 
   </body>
 </html>

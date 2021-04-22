@@ -14,6 +14,7 @@ class NewPurchase implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $product_name;
+    public $order_id;
     /**
      * Create a new event instance.
      *
@@ -22,6 +23,8 @@ class NewPurchase implements ShouldBroadcast
     public function __construct($details=[])
     {
         $this->product_name = $details['product_name'];
+        $this->order_id = $details['order_id'];
+
     }
 
     /**
